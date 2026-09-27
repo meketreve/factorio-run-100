@@ -242,6 +242,31 @@
     .bp{grid-template-columns:34px 1fr;gap:4px 10px}
     .bp .ct{grid-column:2}
   }
+  /* ---------- seeds ---------- */
+  .tablewrap{overflow-x:auto;border-top:1px solid var(--line-soft)}
+  table.seeds{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+  table.seeds th,table.seeds td{padding:8px 12px;text-align:right;white-space:nowrap;border-top:1px solid var(--line-soft)}
+  table.seeds th:first-child,table.seeds td:first-child{
+    text-align:left;font-family:"IBM Plex Mono",monospace;color:var(--rust);font-weight:600;
+  }
+  table.seeds th:nth-child(2),table.seeds td:nth-child(2){text-align:left}
+  table.seeds thead th{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:600;border-top:0;
+  }
+  table.seeds tbody tr.chosen{background:var(--panel-2)}
+  table.seeds td.hi{color:var(--go);font-weight:600}
+  table.seeds td.lo{color:var(--stop);font-weight:600}
+  .verdict{padding:12px 18px;border-top:1px solid var(--line-soft)}
+  .verdict h4{margin:0 0 3px;font-size:15px;font-weight:700;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+  .verdict h4 code{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--rust);
+    background:var(--ground);padding:1px 6px;border-radius:2px;
+  }
+  .verdict h4 i{font-style:normal;font-size:11.5px;color:var(--ink-faint);font-weight:500}
+  .verdict p{margin:3px 0 0;font-size:13.5px;color:var(--ink-soft)}
+  .verdict p b.pro{color:var(--go)}
+  .verdict p b.con{color:var(--stop)}
   footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px}
   footer a{color:var(--rust);text-decoration:none;border-bottom:1px solid var(--line)}
   footer a:hover{border-color:var(--rust)}
@@ -312,6 +337,57 @@
       <div class="bp"><span class="slot">7</span><span class="nm">1× Lab</span><span class="ct">Laboratório.</span></div>
       <div class="bp"><span class="slot">8</span><span class="nm">10× Automation science pack</span><span class="ct">Cartucho vermelho — as dez primeiras na mão, para a pesquisa não ficar parada.</span></div>
       <div class="bp"><span class="slot">9</span><span class="nm">1× Assembling machine 1</span><span class="ct">Fábrica de montagem 1. <u>A partir daqui, nada mais sai da mão</u> — ela fabrica tudo, inclusive as próximas máquinas.</span></div>
+    </div>
+  </div>
+
+  <h2 class="section">Seeds avaliadas</h2>
+  <div class="book">
+    <p class="note">Medidas num raio de 512 tiles do spawn, em previews gerados na <b>2.1.20</b> com base + Space Age. A geração depende de <b>seed + configurações + versão + mods</b> — seed de guia antigo não reproduz aqui. <code>d.</code> é a distância até a mancha mais próxima, em tiles.</p>
+
+    <div class="tablewrap">
+      <table class="seeds">
+        <thead>
+          <tr><th>seed</th><th>preset</th><th>árvore</th><th>ninho</th><th>ferro</th><th>cobre</th><th>carvão</th><th>pedra</th><th>d.fe</th><th>d.cu</th><th>d.ca</th></tr>
+        </thead>
+        <tbody>
+          <tr class="chosen"><td>4249654844 ✓</td><td>padrão</td><td>17,0%</td><td class="lo">181</td><td>365</td><td>201</td><td>193</td><td>98</td><td>63</td><td class="hi">25</td><td class="hi">29</td></tr>
+          <tr><td>1607</td><td>padrão</td><td>24,4%</td><td class="hi">246</td><td>495</td><td>187</td><td>225</td><td>124</td><td>30</td><td>37</td><td>57</td></tr>
+          <tr><td>3407</td><td>padrão</td><td class="hi">24,7%</td><td class="hi">272</td><td>274</td><td class="lo">152</td><td>228</td><td class="lo">36</td><td>55</td><td>37</td><td>33</td></tr>
+          <tr><td>1982385249</td><td>ferroviário</td><td>24,7%</td><td class="lo">149</td><td>540</td><td>296</td><td>253</td><td class="lo">70</td><td class="hi">21</td><td>69</td><td>33</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verdict">
+      <h4><code>4249654844</code> a escolhida <i>configurações padrão</i></h4>
+      <p><b class="pro">A favor:</b> tem <b>nós de rocha grandes perto do spawn</b>, que dão pedra e carvão juntos ao serem minerados — resolve o gargalo dos primeiros 20 minutos sem montar mineração de nenhum dos dois. Cobre a 25 e carvão a 29 tiles. Árvore em 17%, cerca de cinco vezes a mediana das 2000 varridas.</p>
+      <p><b class="con">Contra:</b> ninho mais próximo a <b>181 tiles</b>, abaixo do piso de 200 da varredura — e com a trava da artilharia você passa ~12 h sem poder limpar nada. Ferro a 63 tiles, o mais distante das quatro.</p>
+    </div>
+
+    <div class="verdict">
+      <h4><code>1607</code> a mais segura <i>configurações padrão</i></h4>
+      <p><b class="pro">A favor:</b> folga de <b>246 tiles</b> até o ninho com 24,4% de árvore — a combinação mais confortável para a fase pré-artilharia. Ferro farto e perto: 495 a 30 tiles.</p>
+      <p><b class="con">Contra:</b> carvão a 57 e pedra a 78 tiles. Começo mais burocrático, com mineração de pedra e carvão para montar cedo.</p>
+    </div>
+
+    <div class="verdict">
+      <h4><code>3407</code> a mais folgada e a mais pobre <i>configurações padrão</i></h4>
+      <p><b class="pro">A favor:</b> maior distância de ninho (<b>272</b>) e maior floresta (24,7%) das 2000 varridas.</p>
+      <p><b class="con">Contra:</b> a mais pobre em minério. Ferro 274 a 55 tiles, cobre 152 e pedra quase inexistente (36, a 82 tiles) — aperta justamente o foguete de 8 h.</p>
+    </div>
+
+    <div class="verdict">
+      <h4><code>1982385249</code> alto risco <i>preset Mundo Ferroviário</i></h4>
+      <p><b class="pro">A favor:</b> ferro a <b>21 tiles</b> com 540 de área, e floresta de 24,7%.</p>
+      <p><b class="con">Contra:</b> ninho a <b>149 tiles</b>, o pior número medido. Pedra escassa (70). E por ser preset, exige reativar expansão de inimigos e conferir evolução em 40/200/9 antes de gerar, senão as conquistas caem.</p>
+    </div>
+
+    <div class="bgroup locked">
+      <h3>O que a medição não enxerga</h3>
+      <div class="bp"><span class="slot">!</span><span class="nm">Rochas</span><span class="ct">A análise classifica pixels por <u>map_color de jazida</u>. Rocha é entidade decorativa, sem cor de minério no preview — uma seed cercada de rochas grandes aparece como pobre em pedra na tabela. Foi o caso da 4249654844. Olhe o preview no jogo, não só os números.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Petróleo</span><span class="ct"><u>crude-oil</u> não tem map_color próprio, então não entra em nenhuma coluna. Confira poço perto do spawn à mão — pesa no foguete de 8 h.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Riqueza</span><span class="ct">As colunas são <u>área em pixels</u>, não quantidade de minério. Mancha grande pode ser pobre.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Choke point de água</span><span class="ct">Praticamente não existe no padrão: nas 2000 seeds, o melhor perímetro bloqueado foi <u>4,1%</u>, e na maioria os anéis de raio 140 e 180 deram zero. O preset ferroviário, que aumenta lagos, também não muda isso de forma útil.</span></div>
     </div>
   </div>
 

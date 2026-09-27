@@ -93,11 +93,52 @@ O script classifica pixels pelas cores do `map_color` dos protótipos — ferro 
 python3 ferramentas/contar-crafts.py
 ```
 
-## Notas sobre seeds
+## Seeds avaliadas
 
-A geração é determinística, mas depende de **seed + configurações + versão do jogo + mods carregados**. Seed de guia antigo não reproduz na 2.1, e o Space Age alterou a geração de Nauvis.
+A geração é determinística, mas depende de **seed + configurações + versão do jogo + mods carregados**. Seed de guia antigo não reproduz na 2.1, e o Space Age alterou a geração de Nauvis. Os números abaixo saíram de previews gerados na **2.1.20** com base + Space Age.
 
-Numa varredura de 2000 seeds com configuração padrão, a cobertura de árvore mediana ficou em **3,5%**, com as melhores perto de **24%**. Já choke point de água praticamente não existe: o melhor perímetro bloqueado foi **4,1%**, e na maioria das seeds os anéis de raio 140 e 180 deram zero.
+Medidas num raio de 512 tiles do spawn. `d.` é a distância até a mancha mais próxima, em tiles.
+
+| seed | preset | árvore | **ninho** | ferro | cobre | carvão | pedra | d.fe | d.cu | d.ca |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **4249654844** ✓ | padrão | 17,0% | 181 | 365 | 201 | 193 | 98 | 63 | 25 | 29 |
+| 1607 | padrão | 24,4% | **246** | 495 | 187 | 225 | 124 | 30 | 37 | 57 |
+| 3407 | padrão | **24,7%** | **272** | 274 | 152 | 228 | 36 | 55 | 37 | 33 |
+| 1982385249 | ferroviário | 24,7% | 149 | 540 | 296 | 253 | 70 | **21** | 69 | 33 |
+
+### 4249654844 — a escolhida
+
+**A favor:** tem **nós de rocha grandes perto do spawn**, que dão pedra e carvão juntos ao serem minerados — resolve o gargalo dos primeiros 20 minutos sem montar mineração de nenhum dos dois. Cobre a 25 e carvão a 29 tiles. Cobertura de árvore de 17%, cerca de cinco vezes a mediana.
+
+**Contra:** ninho mais próximo a **181 tiles**, abaixo do piso de 200 que a varredura usava — e com a trava da artilharia você passa ~12 h sem poder limpar nada. Ferro a 63 tiles, o mais distante das candidatas.
+
+### 1607 — a mais segura
+
+**A favor:** folga de **246 tiles** até o ninho com 24,4% de árvore, a combinação mais confortável para a fase pré-artilharia. Ferro farto e perto (495 a 30 tiles).
+
+**Contra:** carvão a 57 e pedra a 78 tiles. Começo mais burocrático: precisa montar mineração de pedra e carvão cedo.
+
+### 3407 — a mais folgada e a mais pobre
+
+**A favor:** maior distância de ninho (**272**) e maior floresta (24,7%) das 2000 varridas.
+
+**Contra:** a mais pobre em minério das quatro. Ferro 274 a 55 tiles, cobre 152, e pedra quase inexistente (36, a 82 tiles) — aperta justamente o foguete de 8 h.
+
+### 1982385249 — ferroviário, alto risco
+
+**A favor:** ferro a **21 tiles** com 540 de área, e floresta de 24,7%.
+
+**Contra:** ninho a **149 tiles**, o pior número medido. Pedra escassa (70). E por ser preset, exige reativar expansão de inimigos e conferir que evolução está em 40/200/9 antes de gerar — senão as conquistas caem.
+
+### O que a medição não enxerga
+
+O `analisar-seed.py` classifica pixels por `map_color` de **jazida**. **Rochas não são jazidas** — são entidades de classe decorativa, sem cor de minério no preview. Uma seed com rochas grandes ao redor do spawn (pedra e carvão de graça, cedo) aparece como pobre em pedra na tabela. Foi o caso da 4249654844. Olhe o preview no jogo, não só os números.
+
+Petróleo também não entra: `crude-oil` não tem `map_color` próprio.
+
+### Sobre água
+
+Choke point de água praticamente não existe com configuração padrão. Nas 2000 seeds varridas, o melhor perímetro bloqueado por água foi **4,1%**, e na maioria os anéis de raio 140 e 180 deram **zero**. O preset ferroviário, que aumenta lagos, também não mudou isso de forma útil.
 
 ## Licença
 
