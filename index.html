@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Rota para as 88 conquistas de Factorio 2.1 (base + Space Age) numa única partida.">
+<style>body{margin:0}img{max-width:100%}</style>
+<title>Rota das 88 Conquistas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --ink:#1b1712;
+    --ink-soft:#4b4238;
+    --ink-faint:#7d7264;
+    --ground:#efe9dd;
+    --panel:#f7f3ea;
+    --panel-2:#e6dece;
+    --line:#cdc2ae;
+    --line-soft:#ded4c2;
+    --rust:#c25a10;
+    --rust-ink:#8f4109;
+    --ember:#e08b2a;
+    --go:#5d8c37;
+    --stop:#a8321f;
+    --violet:#6b4fa0;
+    --shadow:0 1px 0 rgba(27,23,18,.06), 0 2px 8px rgba(27,23,18,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#f0e9db;
+      --ink-soft:#bdb2a0;
+      --ink-faint:#8b8172;
+      --ground:#17140f;
+      --panel:#211d16;
+      --panel-2:#2b261d;
+      --line:#443c2f;
+      --line-soft:#332d23;
+      --rust:#f0913c;
+      --rust-ink:#f6b169;
+      --ember:#e0a93f;
+      --go:#8fbe5c;
+      --stop:#e06a53;
+      --violet:#a98ede;
+      --shadow:0 1px 0 rgba(0,0,0,.3), 0 2px 10px rgba(0,0,0,.28);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#f0e9db;
+    --ink-soft:#bdb2a0;
+    --ink-faint:#8b8172;
+    --ground:#17140f;
+    --panel:#211d16;
+    --panel-2:#2b261d;
+    --line:#443c2f;
+    --line-soft:#332d23;
+    --rust:#f0913c;
+    --rust-ink:#f6b169;
+    --ember:#e0a93f;
+    --go:#8fbe5c;
+    --stop:#e06a53;
+    --violet:#a98ede;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 2px 10px rgba(0,0,0,.28);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Titillium Web",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:15.5px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px 96px}
+
+  /* ---------- header ---------- */
+  header.top{
+    border-bottom:2px solid var(--line);
+    background:linear-gradient(180deg,var(--panel) 0%,var(--ground) 100%);
+    padding:34px 0 0;
+    margin-bottom:28px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--rust);font-weight:600;
+  }
+  h1{
+    font-weight:900;font-size:clamp(34px,6vw,54px);line-height:1.02;
+    margin:8px 0 6px;letter-spacing:-.015em;text-wrap:balance;
+  }
+  h1 .dim{color:var(--ink-faint);font-weight:300}
+  .sub{color:var(--ink-soft);max-width:60ch;margin:0 0 22px}
+
+  .gauge{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;padding-bottom:22px}
+  .gauge .meter{
+    flex:1 1 260px;min-width:240px;
+    border:1px solid var(--line);background:var(--panel);border-radius:3px;
+    padding:12px 14px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow);
+  }
+  .meter .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .meter b{font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+  .meter span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .bar{height:8px;background:var(--panel-2);border-radius:2px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--rust);width:0;transition:width .25s ease}
+  .stat{
+    flex:0 1 150px;border:1px solid var(--line-soft);background:transparent;border-radius:3px;
+    padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:2px;
+  }
+  .stat b{font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}
+  .stat span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .stat.timed b{color:var(--stop)}
+
+  /* ---------- rules ---------- */
+  .rules{
+    border:1px solid var(--line);border-radius:3px;background:var(--panel);
+    margin:0 0 34px;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .rules .hazard{
+    height:7px;
+    background:repeating-linear-gradient(135deg,var(--ember) 0 12px,transparent 12px 24px);
+    background-color:var(--panel-2);
+  }
+  .rules .body{padding:18px 20px 20px}
+  .rules h2{margin:0 0 4px;font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .rules p.lead{margin:0 0 16px;color:var(--ink-soft);font-size:14.5px;max-width:66ch}
+  .rulelist{display:grid;gap:0;margin:0;padding:0;list-style:none}
+  .rulelist li{
+    display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
+    padding:11px 0;border-top:1px solid var(--line-soft);
+  }
+  .rulelist li:first-child{border-top:0}
+  .rulelist .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--stop);border:1px solid currentColor;border-radius:2px;
+    padding:2px 6px;white-space:nowrap;margin-top:2px;
+  }
+  .rulelist .tag.ok{color:var(--go)}
+  .rulelist .tag.info{color:var(--violet)}
+  .rulelist strong{font-weight:700}
+  .rulelist em{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--rust-ink)}
+
+  /* ---------- phases ---------- */
+  .phase{margin:0 0 14px;border:1px solid var(--line);border-radius:3px;background:var(--panel);box-shadow:var(--shadow)}
+  .phase > .head{
+    display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center;
+    padding:14px 16px;border-bottom:1px solid var(--line-soft);
+  }
+  .phase .num{
+    font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;
+    color:var(--ground);background:var(--ink);border-radius:2px;
+    width:44px;height:44px;display:grid;place-items:center;
+  }
+  .phase.done .num{background:var(--go);color:#0f1408}
+  .phase .title{min-width:0}
+  .phase .title h3{margin:0;font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .phase .title p{margin:1px 0 0;color:var(--ink-faint);font-size:13.5px}
+  .clock{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;
+    padding:5px 9px;border-radius:2px;white-space:nowrap;
+    background:var(--panel-2);color:var(--ink-soft);
+  }
+  .clock.hard{background:var(--stop);color:var(--panel)}
+  .phase .body{padding:4px 16px 16px}
+
+  .plan{margin:12px 0 4px;padding:0;list-style:none;display:grid;gap:9px}
+  .plan li{
+    display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;
+    font-size:14.5px;color:var(--ink-soft);
+  }
+  .plan li::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--rust);
+    transform:translateY(-2px);
+  }
+  .plan li b{color:var(--ink);font-weight:600}
+  .plan code{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--panel-2);
+    padding:1px 5px;border-radius:2px;color:var(--rust-ink);
+  }
+
+  .achs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px;margin-top:16px}
+  .ach{
+    display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:start;
+    padding:8px 10px;border:1px solid var(--line-soft);border-radius:2px;
+    background:var(--ground);cursor:pointer;transition:border-color .12s,background .12s;
+  }
+  .ach:hover{border-color:var(--rust)}
+  .ach:focus-within{outline:2px solid var(--rust);outline-offset:1px}
+  .ach input{margin:3px 0 0;accent-color:var(--rust);width:15px;height:15px;cursor:pointer}
+  .ach .n{font-size:13.5px;font-weight:600;line-height:1.3;display:block}
+  .ach .d{font-size:12.5px;color:var(--ink-faint);line-height:1.35;display:block;margin-top:1px}
+  .ach.checked{background:var(--panel-2);border-color:var(--line)}
+  .ach.checked .n{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--line)}
+  .ach .flag{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;font-weight:600;
+    letter-spacing:.07em;text-transform:uppercase;vertical-align:1px;margin-left:5px;
+    padding:1px 4px;border-radius:2px;background:var(--stop);color:var(--ground);
+  }
+  .ach .flag.sa{background:var(--violet)}
+
+  /* ---------- tricks ---------- */
+  h2.section{
+    font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);
+    font-family:"IBM Plex Mono",monospace;font-weight:600;
+    margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  .tricks{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+  .trick{padding:0 0 2px}
+  .trick h4{
+    margin:0 0 3px;font-size:15.5px;font-weight:700;
+    display:flex;gap:8px;align-items:baseline;
+  }
+  .trick h4 i{
+    font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    color:var(--ink-faint);font-weight:500;
+  }
+  .trick p{margin:0;font-size:14px;color:var(--ink-soft)}
+  .trick p + p{margin-top:6px}
+
+  /* ---------- book ---------- */
+  .book{border:1px solid var(--line);border-radius:3px;background:var(--panel);box-shadow:var(--shadow);overflow:hidden}
+  .book .note{padding:14px 18px;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);font-size:14px}
+  .book .note b{color:var(--ink)}
+  .bgroup{padding:6px 0 2px}
+  .bgroup > h3{
+    margin:0;padding:10px 18px 6px;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;
+  }
+  .bgroup.locked > h3{color:var(--stop)}
+  .bp{
+    display:grid;grid-template-columns:38px minmax(160px,1fr) 2fr;gap:14px;align-items:baseline;
+    padding:9px 18px;border-top:1px solid var(--line-soft);
+  }
+  .bp .slot{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--rust);font-weight:600}
+  .bp .nm{font-weight:600;font-size:14.5px}
+  .bp .ct{font-size:13.5px;color:var(--ink-soft)}
+  .bp .ct u{text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--rust-ink);white-space:nowrap}
+  @media (max-width:640px){
+    .bp{grid-template-columns:34px 1fr;gap:4px 10px}
+    .bp .ct{grid-column:2}
+  }
+  footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px}
+  footer a{color:var(--rust);text-decoration:none;border-bottom:1px solid var(--line)}
+  footer a:hover{border-color:var(--rust)}
+  .reset{
+    background:none;border:1px solid var(--line);color:var(--ink-faint);border-radius:2px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    padding:5px 9px;cursor:pointer;
+  }
+  .reset:hover{border-color:var(--stop);color:var(--stop)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Factorio 2.1 experimental · Space Age · sem mods</div>
+    <h1>Rota das 88 <span class="dim">Conquistas</span></h1>
+    <p class="sub">Uma única partida freeplay, configurações padrão, ordem otimizada. As travas de ordem valem mais que a velocidade: quase toda conquista perdida aqui é perdida <em>para sempre</em> nesse save.</p>
+
+    <div class="gauge">
+      <div class="meter">
+        <div class="row"><b id="pct">0%</b><span id="count">0 / 88</span></div>
+        <div class="bar"><i id="fill"></i></div>
+        <div class="row"><span>Progresso total</span><button class="reset" id="reset" type="button">Zerar</button></div>
+      </div>
+      <div class="stat timed"><b>90 min</b><span>Locomotiva</span></div>
+      <div class="stat timed"><b>8 h</b><span>Foguete</span></div>
+      <div class="stat timed"><b>40 h</b><span>Solar System Edge</span></div>
+      <div class="stat"><b id="base-count">0/59</b><span>Base</span></div>
+      <div class="stat"><b id="sa-count">0/29</b><span>Space Age</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="rules">
+    <div class="hazard"></div>
+    <div class="body">
+      <h2>Travas invioláveis</h2>
+      <p class="lead">Seis regras que, se quebradas uma única vez, matam a run. Leia antes de gerar o mapa.</p>
+      <ul class="rulelist">
+        <li><span class="tag">Mods</span><div><strong>Zero mods.</strong> Qualquer mod ativo troca a lista de conquistas por uma lista modded separada que <em>não</em> sincroniza com a Steam — inclusive os "aceitos pelo speedrun". Desative <em>space-age</em> não, mas desative qualquer outro. Planeje em um save separado modded e traga só as <strong>blueprint strings</strong>: a biblioteca de blueprints é global e importar blueprint vanilla não desativa nada.</div></li>
+        <li><span class="tag">Mapa</span><div><strong>Configurações padrão</strong> em inimigos, poluição, expansão, área inicial e árvores. Desde a 2.0.45 mexer em qualquer um desses desliga as conquistas de combate/tempo. Recursos e cliffs você pode ajustar — inimigos e poluição, nunca. Sem comandos de console, nunca (o save fica marcado permanentemente).</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nenhuma estrutura inimiga pode morrer antes da artilharia.</strong> <em>Keeping your hands clean</em> exige que a <em>primeira</em> nest ou worm destruída na partida seja por artilharia — que só vem depois de Vulcanus. Cuidado com tanque, spidertron em auto-target, granadas, poison capsule e creep de turrets. Matar biters soltos é livre.</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nenhum painel solar e nenhuma laser turret até o primeiro foguete.</strong> <em>Steam all the way</em> e <em>Raining bullets</em> contam construções, não uso. Vale também para a primeira space platform. Depois do lançamento, libera geral.</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nenhum baú requester, buffer ou active provider</strong> até você pesquisar uma tecnologia com space science pack (<em>Logistic network embargo</em>). Passive provider e storage são permitidos — dá para viver de bots com isso.</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nada de production ou utility science antes de pesquisar com um pack de outro planeta</strong> (<em>Rush to space</em>). O metallurgic de Vulcanus resolve — e é o mesmo caminho da artilharia.</div></li>
+        <li><span class="tag ok">Livre</span><div><strong>Multiplayer conta</strong> se você ficar 50%+ do tempo do mapa online. Pausar, salvar e recarregar é livre; morrer não penaliza nada além do corpo.</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <div id="phases"></div>
+
+  <h2 class="section">Sequência de crafting manual</h2>
+  <div class="book">
+    <p class="note">Ordem exata do início do jogo, <b>sem fabricar nada extra</b> — <b>106 itens</b> no contador, dentro do orçamento de 111 do <i>Lazy bastard</i>. Siga estritamente: cada item fora da lista sai da sua folga. Acompanhe pela aba de produção → <i>hand crafted</i>.</p>
+
+    <div class="bgroup">
+      <h3>Ordem estrita · do minuto zero até a primeira assembler</h3>
+      <div class="bp"><span class="slot">1</span><span class="nm">1× Burner mining drill</span><span class="ct">Broca de mineração a queimador — a primeira coisa a sair da mão.</span></div>
+      <div class="bp"><span class="slot">2</span><span class="nm">1× Stone furnace</span><span class="ct">Fornalha de pedra.</span></div>
+      <div class="bp"><span class="slot">3</span><span class="nm">1× Boiler</span><span class="ct">Caldeira.</span></div>
+      <div class="bp"><span class="slot">4</span><span class="nm">1× Steam engine</span><span class="ct">Motor a vapor — sua única fonte de energia até o foguete.</span></div>
+      <div class="bp"><span class="slot">5</span><span class="nm">1× Offshore pump</span><span class="ct">Bomba d'água costeira.</span></div>
+      <div class="bp"><span class="slot">6</span><span class="nm">1× Small electric pole</span><span class="ct">Poste elétrico pequeno.</span></div>
+      <div class="bp"><span class="slot">7</span><span class="nm">1× Lab</span><span class="ct">Laboratório.</span></div>
+      <div class="bp"><span class="slot">8</span><span class="nm">10× Automation science pack</span><span class="ct">Cartucho vermelho — as dez primeiras na mão, para a pesquisa não ficar parada.</span></div>
+      <div class="bp"><span class="slot">9</span><span class="nm">1× Assembling machine 1</span><span class="ct">Fábrica de montagem 1. <u>A partir daqui, nada mais sai da mão</u> — ela fabrica tudo, inclusive as próximas máquinas.</span></div>
+    </div>
+  </div>
+
+  <h2 class="section">O livro de blueprints</h2>
+  <div class="book">
+    <p class="note">A biblioteca de blueprints é <b>global</b>: o que você salvar nela num save modded aparece na run vanilla, e isso não desativa nada. Duas regras ao montar: use <b>só entidades vanilla</b> (blueprint com entidade de mod chega quebrado), e blueprint de <b>space platform é um tipo separado</b> — não mistura com blueprint de superfície. Sem bots você ainda usa tudo: cole o ghost e coloque as peças na mão por cima.</p>
+
+    <div class="bgroup">
+      <h3>Nauvis — antes do foguete · colado em cima de ghost</h3>
+      <div class="bp"><span class="slot">00</span><span class="nm">Arranque queimado</span><span class="ct">4 burner drills no carvão + 2 pares drill→stone furnace em ferro e cobre. Os primeiros 5 minutos sem pensar.</span></div>
+      <div class="bp"><span class="slot">01</span><span class="nm">Coluna de fundição</span><span class="ct">Electric drill 1:1 com forno na correia, com a variante de steel furnace pronta para substituir por cima.</span></div>
+      <div class="bp"><span class="slot">02</span><span class="nm">Mall inicial</span><span class="ct">Assemblers de correia, inserter, poste médio, drill, forno e assembler. <u>É o que salva o Lazy bastard</u> — depois dele, nada mais sai da mão.</span></div>
+      <div class="bp"><span class="slot">03</span><span class="nm">Vermelha + verde</span><span class="ct">Bloco de labs alimentado pelo bus, já com espaço reservado para os packs seguintes.</span></div>
+      <div class="bp"><span class="slot">04</span><span class="nm">Vapor repetível</span><span class="ct">Bomba : caldeira : motor na razão <u>1 : 20 : 40</u> ≈ 36 MW por tile. Sua única fonte de energia até o lançamento — faça três cópias.</span></div>
+      <div class="bp"><span class="slot">05</span><span class="nm">Bus 4-4-2-2</span><span class="ct">Ferro, cobre, circuito verde e aço, com folga lateral para petróleo e vermelho depois.</span></div>
+      <div class="bp"><span class="slot">06</span><span class="nm">Circuito verde</span><span class="ct">Razão <u>3 fio de cobre : 2 circuito</u>, em bloco que encaixa direto no bus.</span></div>
+      <div class="bp"><span class="slot">07</span><span class="nm">Refino + cracking</span><span class="ct">Advanced oil processing, heavy→light, light→petroleum, solid fuel e lubrificante num bloco só.</span></div>
+      <div class="bp"><span class="slot">08</span><span class="nm">Azul, militar, química</span><span class="ct">Os três blocos de pack que faltam para o foguete, desenhados para colar em sequência no mesmo bus.</span></div>
+      <div class="bp"><span class="slot">09</span><span class="nm">Muralha</span><span class="ct">Muro + gun turrets com correia de munição e reparo por bot. <u>Sem laser turret</u> — essa versão é a única até o foguete.</span></div>
+      <div class="bp"><span class="slot">10</span><span class="nm">Rampa do foguete</span><span class="ct">Low density structures, rocket fuel, rocket control units e a alimentação do silo.</span></div>
+      <div class="bp"><span class="slot">11</span><span class="nm">Ferrovia</span><span class="ct">Intersecção, estação de carga e de descarga — <u>só passive provider e storage</u> enquanto o embargo logístico estiver valendo.</span></div>
+    </div>
+
+    <div class="bgroup">
+      <h3>Nauvis — depois do lançamento</h3>
+      <div class="bp"><span class="slot">12</span><span class="nm">Solar isolado</span><span class="ct">Rede elétrica própria, sem tocar na principal: <u>≈ 6 painéis : 5 acumuladores</u>. Deixe rodando uma hora e o <i>Solaris</i> cai.</span></div>
+      <div class="bp"><span class="slot">13</span><span class="nm">Nuclear</span><span class="ct">2 reatores → <u>16 trocadores → 28 turbinas</u>, com a lógica de inserir combustível só quando o vapor cai.</span></div>
+      <div class="bp"><span class="slot">14</span><span class="nm">Artilharia</span><span class="ct">Vagão de artilharia + trilho de avanço. O primeiro tiro entrega três conquistas — monte antes de voltar de Vulcanus.</span></div>
+      <div class="bp"><span class="slot">15</span><span class="nm">Peixe legendário</span><span class="ct">Fish breeding em biochambers + recyclers com quality modules devolvendo tudo que não for legendary. Ligue e esqueça.</span></div>
+      <div class="bp"><span class="slot">16</span><span class="nm">Upcycle legendário</span><span class="ct">Loop de recycler + quality para módulos e equipamento de mech armor. Come as últimas conquistas do jogo.</span></div>
+    </div>
+
+    <div class="bgroup">
+      <h3>Espaço e planetas · blueprint de plataforma fica em livro separado</h3>
+      <div class="bp"><span class="slot">17</span><span class="nm">Plataforma inicial</span><span class="ct">Coletores, britadores, thrusters e defesa de asteroide — o suficiente para space science e para viajar.</span></div>
+      <div class="bp"><span class="slot">18</span><span class="nm">Vulcanus</span><span class="ct">Big drills em calcita e tungstênio, foundry na lava, ciência metalúrgica. <u>Primeiro planeta</u>: destrava artilharia e <i>Rush to space</i>.</span></div>
+      <div class="bp"><span class="slot">19</span><span class="nm">Fulgora</span><span class="ct">Descarga de sucata, banco de recicladores, EM plant e o banco de acumuladores da tempestade.</span></div>
+      <div class="bp"><span class="slot">20</span><span class="nm">Gleba</span><span class="ct">Nutrientes, bioflux, ciência agrícola e queima de spoilage — o bloco que mais dá errado se improvisado.</span></div>
+      <div class="bp"><span class="slot">21</span><span class="nm">Aquilo</span><span class="ct">Heat pipes, fluoroketone e ciência criogênica, já pensando na plataforma de promethium.</span></div>
+    </div>
+
+    <div class="bgroup locked">
+      <h3>🔒 Cofre — livro separado, não abra antes da hora</h3>
+      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com painel solar</span><span class="ct">Colar por engano antes do foguete mata <i>Steam all the way</i>. Inclui blueprints de plataforma com solar.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com laser turret</span><span class="ct">Mata <i>Raining bullets</i>. Mantenha a muralha 09 como única defesa disponível no livro principal.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com requester, buffer ou active provider</span><span class="ct">Mata <i>Logistic network embargo</i> até você pesquisar com space science.</span></div>
+    </div>
+  </div>
+
+  <h2 class="section">Macetes que mais economizam tempo</h2>
+  <div class="tricks">
+    <div class="trick">
+      <h4>Blueprint book pronto <i>legal</i></h4>
+      <p>Monte tudo antes em um save modded com Factory Planner / Rate Calculator / Blueprint Sandboxes e salve na biblioteca global: bus inicial, red/green/blue/purple/yellow, refino, malha de trem, base de cada planeta. Na run você só cola. Blueprint não desativa conquista — só o mod ativo desativa.</p>
+    </div>
+    <div class="trick">
+      <h4>Lazy bastard: conte 111 <i>≤111 crafts manuais</i></h4>
+      <p>Craft manual conta por <em>item</em>, não por clique — os intermediários entram na conta. Siga a sequência da seção acima e não improvise: assim que a assembling machine 1 existir, ela faz tudo, inclusive as próximas máquinas.</p>
+    </div>
+    <div class="trick">
+      <h4>Vulcanus primeiro <i>trava tripla</i></h4>
+      <p>Vulcanus dá metallurgic science (→ <em>Rush to space</em>), a tecnologia de artilharia (→ destrava a primeira nest legal) e os demolishers (três kills + <em>Get off my lawn</em>). Fulgora e Gleba não desbloqueiam nada urgente. Ir para Vulcanus primeiro resolve quatro travas de ordem de uma vez.</p>
+    </div>
+    <div class="trick">
+      <h4>O tiro de artilharia triplo <i>3 em 1</i></h4>
+      <p>O primeiro projétil de artilharia numa nest de Nauvis entrega <em>Keeping your hands clean</em>, <em>Art of siege</em> e <em>Pest control</em> no mesmo instante. Use um artillery wagon em trilho perto do ninho mais próximo.</p>
+    </div>
+    <div class="trick">
+      <h4>Solaris em rede isolada <i>10 GJ/h</i></h4>
+      <p>Depois do foguete, construa uma rede elétrica <em>separada</em> (sem tocar na principal): ~50 painéis solares + acumuladores + um consumo constante qualquer. 10 GJ/h ≈ 2,8 MW médios. Uma hora de jogo com essa rede rodando 100% solar e o achievement cai sozinho.</p>
+    </div>
+    <div class="trick">
+      <h4>Golem + Destroyer of worlds <i>combo</i></h4>
+      <p>Com mech armor lotada de energy shields legendárias, solte uma bomba atômica perto de você e sobreviva ao estouro: <em>I am the destroyer of worlds</em> e <em>Golem</em> (levar 500+ de dano num hit) na mesma explosão. Salve antes.</p>
+    </div>
+    <div class="trick">
+      <h4>Watch your step <i>morra de propósito</i></h4>
+      <p>Loop curto de trilho, uma locomotiva em automático, você parado nos trilhos sem exoskeleton. O corpo fica com tudo — recupere depois. Faça longe da defesa.</p>
+    </div>
+    <div class="trick">
+      <h4>Mining with determination <i>patch mínimo</i></h4>
+      <p>Procure o menor patch de minério isolado que achar (costuma ter um de 2–3 mil perto do spawn), cerque com electric drills e deixe drenar. Óleo não serve: poços nunca zeram.</p>
+    </div>
+    <div class="trick">
+      <h4>Peixe legendário <i>o mais lento de todos</i></h4>
+      <p><em>Today's fish is trout a la creme</em> exige upcycle: fish breeding (agricultural science, só em Nauvis) em biochambers com quality modules + recyclers reciclando todo peixe que não for legendary. Roda ~1 h por peixe. <strong>Ligue essa fábrica assim que tiver agricultural science</strong> e esqueça dela — se deixar para o fim, você espera parado.</p>
+    </div>
+    <div class="trick">
+      <h4>You are doing it right <i>contador vitalício</i></h4>
+      <p>É máquinas colocadas por robôs &gt; colocadas na mão, contando o save inteiro. Depois dos construction bots, nunca mais coloque nada com a mão: ghost + bot, sempre. Os planetas viram lucro puro nesse contador.</p>
+    </div>
+    <div class="trick">
+      <h4>Shattered planet em paralelo <i>60.000 km</i></h4>
+      <p>As três conquistas de distância são tempo real de viagem. Assim que tiver uma plataforma capaz de sobreviver além do Solar System Edge, mande-a embora e deixe viajando enquanto você faz o resto. É a coisa mais fácil de esquecer de começar cedo.</p>
+    </div>
+    <div class="trick">
+      <h4>Tiers de produção por hora <i>Iron throne / Circuit veteran</i></h4>
+      <p><em>Mass production</em> é cumulativo (20 M de circuitos verdes), mas <em>Iron throne</em>, <em>Circuit veteran</em> e <em>Computer age</em> são <strong>por hora</strong>: 400k placas de ferro/h, 25k circuitos vermelhos/h, 5k processing units/h. Isso é uma megabase de verdade — planeje o pós-vitória com beacons + módulos legendários, senão vira grind de 100 h.</p>
+    </div>
+  </div>
+
+  <footer>
+    Conquistas conferidas na <a href="https://wiki.factorio.com/Achievements">wiki oficial</a> · 59 base + 29 Space Age · progresso salvo neste navegador.
+  </footer>
+</div>
+
+<script>
+const PH = [
+  {n:"00", t:"Antes de apertar em novo jogo", c:"pré-run", hard:false,
+   plan:[
+     "<b>Desative todos os mods</b> exceto os oficiais da DLC (space-age, quality, elevated-rails). Confirme no menu de conquistas que a lista está sincronizando com a Steam.",
+     "Mapa: <b>tudo padrão</b> em inimigos, poluição, expansão, starting area e árvores. Pode ajustar recursos e cliffs à vontade — não toca em conquista.",
+     "Importe o <b>blueprint book</b> preparado no save modded. Reveja hotkeys, deixe o <code>alt-mode</code> ligado.",
+     "Decore a <b>sequência de crafting manual</b> (seção abaixo): 106 itens, orçamento de 111. Abra a aba de produção e acompanhe o contador de <i>hand crafted</i>."
+   ], a:[]},
+
+  {n:"01", t:"Arranque e a locomotiva de 90 minutos", c:"0 h → 1 h 30", hard:true,
+   plan:[
+     "Burner mining drills → stone furnace → primeira assembler o quanto antes. Tudo depois disso sai de máquina, não da mão.",
+     "Red + green science rodando antes dos 30 min. Steam engine logo de cara — e <b>nenhum painel solar</b>, nunca, até o foguete.",
+     "<b>Trilhos e locomotiva antes de 1 h 30.</b> Não precisa de rede ferroviária: basta uma locomotiva montada sobre trilho dentro do prazo. Coloque no orçamento de crafts.",
+     "Deixe a poluição crescer naturalmente — <i>It stinks and they don't like it</i> cai sozinho no primeiro ataque. Defenda com gun turrets; <b>não avance em nenhum ninho</b>."
+   ],
+   a:["automate-this","getting-on-track","getting-on-track-pro","steam-power","research-automation","research-logistics","eco-unfriendly","stinks-dont-like"]},
+
+  {n:"02", t:"Rush ao foguete em 8 horas", c:"1 h 30 → 8 h", hard:true,
+   plan:[
+     "Military e chemical science na sequência; óleo assim que der (<i>Eco unfriendly</i> vem do research de oil processing).",
+     "<b>Pule production e utility science.</b> Elas ficam bloqueadas por <i>Rush to space</i> até você pesquisar com metallurgic.",
+     "Construction bots o quanto antes — a partir daí, <b>nada mais é colocado na mão</b> (contador de <i>You are doing it right</i>).",
+     "Defesa só com gun turrets e muro. <b>Zero laser turrets</b> até o lançamento.",
+     "Lançar o foguete antes das 8 h entrega <i>There is no spoon</i> e <i>No time for chitchat</i> juntos, e fecha <i>Lazy bastard</i>, <i>Steam all the way</i> e <i>Raining bullets</i> de uma vez."
+   ],
+   a:["research-military","research-chemicals","smoke-kipper","no-spoon","no-chitchat","lazy-bastard","steam-all-way","raining-bullets"]},
+
+  {n:"03", t:"Órbita, space science e Vulcanus", c:"8 h → ~14 h", hard:false,
+   plan:[
+     "Primeira space platform → space science. <b>Só depois</b> de pesquisar uma tech com space science você pode construir requester/buffer/active provider (<i>Logistic network embargo</i> fecha aqui).",
+     "Agora sim: painéis solares e laser turrets liberados. Ligue uma rede solar isolada para começar a contar <i>Solaris</i>.",
+     "<b>Primeiro planeta: Vulcanus.</b> Metallurgic science → <i>Rush to space</i> travado e resolvido, e a tech de artilharia desbloqueada.",
+     "Em Vulcanus: construa em cima do território de um demolisher (<i>Get off my lawn</i>), mate small e medium com tanque/artilharia, e estoure um cliff (<i>Terraformer</i>). O big demolisher pode esperar o equipamento melhor."
+   ],
+   a:["reach-stars","research-space","logistic-embargo","solar-power","visit-vulcanus","research-metallurgics","rush-to-space","get-off-lawn","if-it-bleeds","bigger-guns","terraformer"]},
+
+  {n:"04", t:"O primeiro tiro de artilharia", c:"assim que voltar a Nauvis", hard:true,
+   plan:[
+     "Artillery turret ou artillery wagon no alcance do ninho mais próximo. <b>Confirme que nenhuma nest ou worm morreu ainda</b> — se morreu, <i>Keeping your hands clean</i> já era e a run de 100% acabou.",
+     "O primeiro projétil entrega <b>três conquistas de uma vez</b>: <i>Keeping your hands clean</i>, <i>Art of siege</i> e <i>Pest control</i>.",
+     "A partir daqui combate é livre: limpe ninhos à vontade, atropele 10 spawners com o tanque (<i>Steamrolled</i>) e 100 árvores (<i>Run Forrest, run</i>), e queime 10 mil árvores com flamethrower (<i>Pyromaniac</i>)."
+   ],
+   a:["hands-clean","art-of-siege","pest-control","steamrolled","run-forrest"]},
+
+  {n:"05", t:"Fulgora e Gleba", c:"~14 h → 25 h", hard:false,
+   plan:[
+     "Fulgora: electromagnetic science, recyclers e o começo da cadeia de <b>qualidade</b> (<i>Make it better</i>, <i>Crafting with quality</i>).",
+     "Gleba: agricultural science e pentapods. <b>Atraia um grupo com spores</b> para <i>It stinks and they do like it</i>.",
+     "Com agricultural science em mãos, <b>ligue já a fábrica de peixe legendário</b> em Nauvis (fish breeding + quality modules + recyclers). Ela roda sozinha por horas.",
+     "Produtividade e módulos: com Vulcanus + Fulgora estáveis, os módulos 3 de speed, efficiency e productivity saem de graça."
+   ],
+   a:["visit-fulgora","research-electromagnetics","make-it-better","crafting-quality","visit-gleba","research-agriculture","stinks-do-like","crafting-speed","crafting-efficiency","crafting-productivity","nuclear-power"]},
+
+  {n:"06", t:"Aquilo, fusão e a corrida das 40 horas", c:"25 h → 40 h", hard:true,
+   plan:[
+     "Aquilo: cryogenic science e <b>fusion power</b> (<i>Fusion power</i>).",
+     "Promethium science exige plataforma de combate pesada no Solar System Edge — e é o que fecha <i>Tech maniac</i> depois.",
+     "<b>Chegar ou passar do Solar System Edge conta como terminar o jogo.</b> Antes de 40 h = <i>Express delivery</i> + <i>Work around the clock</i> + <i>Second star to the right</i> na mesma viagem.",
+     "Assim que a plataforma aguentar, <b>mande uma rumo ao shattered planet e deixe viajando</b> — 10 mil, 30 mil e 60 mil km são tempo real acumulando em segundo plano."
+   ],
+   a:["visit-aquilo","research-cryogenics","fusion-power","research-promethium","second-star","express-delivery","work-clock"]},
+
+  {n:"07", t:"Pós-vitória: o farm sem relógio", c:"40 h → fim", hard:false,
+   plan:[
+     "Sem mais prazos. Aqui entram os grinds: <b>Iron throne 3</b> (400k placas/h), <b>Circuit veteran 3</b> (25k circuitos vermelhos/h), <b>Computer age 3</b> (5k processing units/h) e <b>Mass production 3</b> (20 M de circuitos verdes acumulados). Megabase com beacons e módulos legendários.",
+     "Qualidade legendária: <i>My modules are legendary</i>, <i>Look at my shiny rare armor</i> e <i>No room for more</i> (mech armor inteira de equipamento legendário).",
+     "Miudezas: spidertron, 100 destroyers seguindo você (<i>Minions</i>), trem com rota de 1000+ tiles, peixe cru no foguete, patch de minério zerado, 10k itens entregues por logistic bots, 100 objetos desconstruídos por bots.",
+     "Por último os dois de risco, com save antes: nuke em si mesmo de mech armor (<i>Golem</i> + <i>I am the destroyer of worlds</i>) e morrer atropelado pela própria locomotiva (<i>Watch your step</i>).",
+     "<i>Tech maniac</i> fecha quando toda tecnologia não-infinita estiver pesquisada — é normalmente a última a cair."
+   ],
+   a:["solaris","iron-1","iron-2","iron-3","circuit-1","circuit-2","circuit-3","computer-1","computer-2","computer-3","mass-1","mass-2","mass-3","research-production","research-utility","tech-maniac","arachnophilia","minions","trans-factorio","fish-space","mining-determination","package","delivery-service","automated-construction","automated-cleanup","doing-it-right","pyromaniac","size-matters","golem","destroyer-worlds","watch-step","my-modules-legendary","shiny-rare-armor","no-room-more","trout-creme","shattered-1","shattered-2","shattered-3"]}
+];
+
+const A = {
+  "automate-this":["Automate this!","Construir uma assembling machine."],
+  "getting-on-track":["Getting on track","Construir uma locomotiva."],
+  "getting-on-track-pro":["Getting on track like a pro","Locomotiva nos primeiros 90 minutos.",1],
+  "steam-power":["Steam power","Gerar energia com steam engine."],
+  "solar-power":["Solar power","Gerar energia com painel solar.",0,"só depois do foguete"],
+  "nuclear-power":["Nuclear power","Gerar energia com usina nuclear."],
+  "eco-unfriendly":["Eco unfriendly","Pesquisar oil processing."],
+  "research-automation":["Research with automation","Pesquisar com automation science."],
+  "research-logistics":["Research with logistics","Pesquisar com logistic science."],
+  "research-military":["Research with military","Pesquisar com military science."],
+  "research-chemicals":["Research with chemicals","Pesquisar com chemical science."],
+  "research-production":["Research with production","Pesquisar com production science."],
+  "research-utility":["Research with utility","Pesquisar com utility science."],
+  "research-space":["Research with space","Pesquisar com space science."],
+  "stinks-dont-like":["It stinks and they don't like it","Provocar um ataque por poluição.",1],
+  "smoke-kipper":["Smoke me a kipper…","Lançar um foguete ao espaço."],
+  "no-chitchat":["No time for chitchat","Foguete em até 15 horas.",1],
+  "no-spoon":["There is no spoon","Foguete em até 8 horas.",1],
+  "lazy-bastard":["Lazy bastard","Foguete com no máximo 111 crafts manuais.",1],
+  "steam-all-way":["Steam all the way","Foguete sem ter construído nenhum painel solar.",1],
+  "raining-bullets":["Raining bullets","Foguete sem ter construído nenhuma laser turret.",1],
+  "logistic-embargo":["Logistic network embargo","Pesquisar com space science sem ter construído requester, buffer ou active provider.",1],
+  "hands-clean":["Keeping your hands clean","A PRIMEIRA estrutura inimiga destruída tem que ser por artilharia.",1],
+  "art-of-siege":["Art of siege","Destruir uma estrutura inimiga com artilharia."],
+  "pest-control":["Pest control","Destruir um biter spawner."],
+  "steamrolled":["Steamrolled","Destruir 10 spawners por impacto de veículo."],
+  "run-forrest":["Run Forrest, run","Destruir 100 árvores por impacto."],
+  "pyromaniac":["Pyromaniac","Destruir 10 000 árvores com fogo."],
+  "terraformer":["Terraformer","Destruir um cliff."],
+  "destroyer-worlds":["I am the destroyer of worlds","Usar uma bomba atômica."],
+  "golem":["Golem","Sobreviver a um hit de 500+ de dano."],
+  "watch-step":["Watch your step","Morrer atropelado por uma locomotiva em movimento."],
+  "minions":["Minions","Ter 100 robôs de combate seguindo você."],
+  "arachnophilia":["Arachnophilia","Construir um spidertron."],
+  "trans-factorio":["Trans-Factorio express","Um trem traçar rota de 1 000+ tiles."],
+  "mining-determination":["Mining with determination","Esgotar completamente um patch de recurso."],
+  "package":["You've got a package","Ser abastecido por um logistic robot."],
+  "delivery-service":["Delivery service","10 000 itens entregues a você por logistic bots."],
+  "automated-construction":["Automated construction","Construir 100 máquinas com robôs."],
+  "automated-cleanup":["Automated cleanup","Desconstruir 100 objetos com robôs."],
+  "doing-it-right":["You are doing it right","Construir mais máquinas com robôs do que na mão."],
+  "crafting-speed":["Crafting with speed","Fabricar um speed module 3."],
+  "crafting-efficiency":["Crafting with efficiency","Fabricar um efficiency module 3."],
+  "crafting-productivity":["Crafting with productivity","Fabricar um productivity module 3."],
+  "solaris":["Solaris","Produzir mais de 10 GJ/h só com painéis solares."],
+  "mass-1":["Mass production 1","10 000 circuitos eletrônicos."],
+  "mass-2":["Mass production 2","1 000 000 de circuitos eletrônicos."],
+  "mass-3":["Mass production 3","20 000 000 de circuitos eletrônicos."],
+  "circuit-1":["Circuit veteran 1","1 000 circuitos avançados por hora."],
+  "circuit-2":["Circuit veteran 2","10 000 circuitos avançados por hora."],
+  "circuit-3":["Circuit veteran 3","25 000 circuitos avançados por hora."],
+  "computer-1":["Computer age 1","500 processing units por hora."],
+  "computer-2":["Computer age 2","1 000 processing units por hora."],
+  "computer-3":["Computer age 3","5 000 processing units por hora."],
+  "iron-1":["Iron throne 1","20 000 placas de ferro por hora."],
+  "iron-2":["Iron throne 2","200 000 placas de ferro por hora."],
+  "iron-3":["Iron throne 3","400 000 placas de ferro por hora."],
+  "tech-maniac":["Tech maniac","Pesquisar todas as tecnologias."],
+  "fish-space":["So long and thanks for all the fish","Mandar um raw fish ao espaço num foguete."],
+
+  "reach-stars":["Reach for the stars","Criar uma space platform.",0,"sa"],
+  "visit-vulcanus":["Visit Vulcanus","Viajar até Vulcanus.",0,"sa"],
+  "visit-fulgora":["Visit Fulgora","Viajar até Fulgora.",0,"sa"],
+  "visit-gleba":["Visit Gleba","Viajar até Gleba.",0,"sa"],
+  "visit-aquilo":["Visit Aquilo","Viajar até Aquilo.",0,"sa"],
+  "research-metallurgics":["Research with metallurgics","Pesquisar com metallurgic science.",0,"sa"],
+  "research-electromagnetics":["Research with electromagnetics","Pesquisar com electromagnetic science.",0,"sa"],
+  "research-agriculture":["Research with agriculture","Pesquisar com agricultural science.",0,"sa"],
+  "research-cryogenics":["Research with cryogenics","Pesquisar com cryogenic science.",0,"sa"],
+  "research-promethium":["Research with promethium","Pesquisar com promethium science.",0,"sa"],
+  "rush-to-space":["Rush to space","Pesquisar com pack de outro planeta antes de destravar production ou utility science.",1,"sa"],
+  "get-off-lawn":["Get off my lawn","Perturbar um demolisher construindo no território dele.",0,"sa"],
+  "if-it-bleeds":["If it bleeds, we can kill it","Matar um small demolisher.",0,"sa"],
+  "bigger-guns":["We need bigger guns","Matar um medium demolisher.",0,"sa"],
+  "size-matters":["Size doesn't matter","Matar um big demolisher.",0,"sa"],
+  "stinks-do-like":["It stinks and they do like it","Atrair um grupo de pentapods com spores.",0,"sa"],
+  "make-it-better":["Make it better","Inserir um quality module num slot.",0,"sa"],
+  "crafting-quality":["Crafting with quality","Fabricar um quality module 3.",0,"sa"],
+  "my-modules-legendary":["My modules are legendary","Fabricar um quality module 3 legendário.",0,"sa"],
+  "shiny-rare-armor":["Look at my shiny rare armor","Equipar power armor MK2 ou mech armor rare+.",0,"sa"],
+  "no-room-more":["No room for more","Mech armor legendária cheia de equipamento legendário.",0,"sa"],
+  "trout-creme":["Today's fish is trout a la creme","Comer um peixe legendário.",0,"sa"],
+  "fusion-power":["Fusion power","Gerar energia com usina de fusão.",0,"sa"],
+  "second-star":["Second star to the right…","Chegar ao Solar System Edge ou além.",0,"sa"],
+  "work-clock":["Work around the clock","Terminar o jogo em até 100 horas.",1,"sa"],
+  "express-delivery":["Express delivery","Terminar o jogo em até 40 horas.",1,"sa"],
+  "shattered-1":["Going to shattered planet 1","Viajar 10 000 km rumo ao shattered planet.",0,"sa"],
+  "shattered-2":["Going to shattered planet 2","Viajar 30 000 km rumo ao shattered planet.",0,"sa"],
+  "shattered-3":["Going to shattered planet 3","Viajar 60 000 km rumo ao shattered planet.",0,"sa"]
+};
+
+const KEY = "factorio-88-v1";
+let done = {};
+try { done = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { done = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {} }
+
+const host = document.getElementById("phases");
+PH.forEach(p => {
+  const sec = document.createElement("section");
+  sec.className = "phase";
+  sec.dataset.phase = p.n;
+  const achs = p.a.map(id => {
+    const d = A[id];
+    if (!d) return "";
+    const sa = d[3] === "sa";
+    const timed = d[2] === 1;
+    const flag = timed ? '<span class="flag">trava</span>' : (sa ? '<span class="flag sa">SA</span>' : "");
+    return '<label class="ach' + (done[id] ? " checked" : "") + '" data-id="' + id + '">' +
+      '<input type="checkbox"' + (done[id] ? " checked" : "") + '>' +
+      '<span><span class="n">' + d[0] + flag + '</span><span class="d">' + d[1] + '</span></span></label>';
+  }).join("");
+  sec.innerHTML =
+    '<div class="head"><div class="num">' + p.n + '</div>' +
+    '<div class="title"><h3>' + p.t + '</h3><p>' + p.a.length + ' conquista' + (p.a.length === 1 ? "" : "s") + ' nesta fase</p></div>' +
+    '<div class="clock' + (p.hard ? " hard" : "") + '">' + p.c + '</div></div>' +
+    '<div class="body"><ul class="plan">' + p.plan.map(x => "<li><span>" + x + "</span></li>").join("") + '</ul>' +
+    (achs ? '<div class="achs">' + achs + "</div>" : "") + "</div>";
+  host.appendChild(sec);
+});
+
+function refresh(){
+  const ids = Object.keys(A);
+  const n = ids.filter(i => done[i]).length;
+  const nsa = ids.filter(i => done[i] && A[i][3] === "sa").length;
+  document.getElementById("pct").textContent = Math.round(n / ids.length * 100) + "%";
+  document.getElementById("count").textContent = n + " / " + ids.length;
+  document.getElementById("fill").style.width = (n / ids.length * 100) + "%";
+  document.getElementById("base-count").textContent = (n - nsa) + "/59";
+  document.getElementById("sa-count").textContent = nsa + "/29";
+  document.querySelectorAll(".phase").forEach(sec => {
+    const boxes = sec.querySelectorAll(".ach");
+    const all = boxes.length > 0 && [...boxes].every(b => b.classList.contains("checked"));
+    sec.classList.toggle("done", all);
+  });
+}
+
+host.addEventListener("change", e => {
+  const lab = e.target.closest(".ach");
+  if (!lab) return;
+  done[lab.dataset.id] = e.target.checked;
+  if (!e.target.checked) delete done[lab.dataset.id];
+  lab.classList.toggle("checked", e.target.checked);
+  save(); refresh();
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  done = {}; save();
+  document.querySelectorAll(".ach").forEach(l => { l.classList.remove("checked"); l.querySelector("input").checked = false; });
+  refresh();
+});
+
+refresh();
+</script>
+</body>
+</html>
