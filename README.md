@@ -23,6 +23,24 @@ Seis regras que, quebradas uma vez, matam a run inteira:
 
 Relógios: locomotiva em **1 h 30**, foguete em **8 h**, Solar System Edge em **40 h**.
 
+## Sequência de crafting manual
+
+*Lazy bastard* permite no máximo **111 itens** fabricados à mão até o foguete. Esta sequência fecha em **106**. Siga estritamente, sem fabricar nada extra — cada item fora da lista sai da sua folga.
+
+| # | Item | |
+|---:|---|---|
+| 1 | 1× Burner mining drill | broca de mineração a queimador |
+| 2 | 1× Stone furnace | fornalha de pedra |
+| 3 | 1× Boiler | caldeira |
+| 4 | 1× Steam engine | motor a vapor |
+| 5 | 1× Offshore pump | bomba d'água costeira |
+| 6 | 1× Small electric pole | poste elétrico pequeno |
+| 7 | 1× Lab | laboratório |
+| 8 | 10× Automation science pack | cartucho vermelho |
+| 9 | 1× Assembling machine 1 | fábrica de montagem 1 |
+
+**A partir da assembling machine, nada mais sai da mão** — ela fabrica tudo, inclusive as próximas máquinas. Acompanhe o contador em Produção → *hand crafted*.
+
 ## Conteúdo
 
 ```
