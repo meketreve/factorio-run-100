@@ -45,14 +45,7 @@ Relógios: locomotiva em **1 h 30**, foguete em **8 h**, Solar System Edge em **
 
 ```
 index.html                 a rota interativa (é o que vira a página)
-blueprints/                blueprints do arranque, prontos para importar
-  00-livro-arranque.txt      livro com as 5 abaixo
-  01-fundicao.txt            coluna de fundição 1:1, 8 fornos
-  02-mall.txt                6 assemblers com saída em baú
-  03-labs.txt                bloco de 6 labs
-  04-circuito-verde.txt      9 cabo : 6 circuito (razão 3:2)
-  05-muralha.txt             muro + gun turrets, sem laser
-  gerar-blueprints.py        gera e valida os .txt acima
+blueprints/                a preencher — montados à mão em jogo
 ferramentas/
   perfil-mods.sh             alterna o mod-list.json entre vanilla e modded
   analisar-seed.py           mede árvores, água, ninhos e minério num preview de mapa
@@ -61,13 +54,11 @@ ferramentas/
 
 ## Blueprints
 
-Importe `blueprints/00-livro-arranque.txt` — é o livro com as cinco dentro.
+Ainda não há nenhum aqui. Os blueprints estão sendo montados à mão em jogo e vão ser commitados conforme ficarem prontos.
 
-Os blueprints foram gerados por script e validados contra os dados da instalação do jogo: todo nome de entidade existe, os tamanhos vêm dos `collision_box` reais, nenhuma entidade se sobrepõe, e cada inserter pega de uma entidade real e entrega em outra.
+A lista do que cada um precisa conter — e a ordem em que são usados — está na seção **O livro de blueprints** da [rota](https://meketreve.github.io/factorio-run-100/).
 
-> **`direction` de um inserter é o lado de onde ele PEGA**, não onde entrega. `pickup_position = {0,-2}`, `insert_position = {0,2.2}`. Errar isso deixa o blueprint inteiro 180° virado.
-
-Você ainda precisa definir a receita de cada assembler — blueprint sem receita vem em branco.
+Duas regras ao salvar: **só entidades vanilla** (blueprint com entidade de mod chega quebrado na run) e **blueprint de space platform é um tipo separado**, que não mistura com blueprint de superfície.
 
 ## Ferramentas
 
