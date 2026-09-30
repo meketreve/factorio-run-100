@@ -192,6 +192,8 @@
   .ach input{margin:3px 0 0;accent-color:var(--rust);width:15px;height:15px;cursor:pointer}
   .ach .n{font-size:13.5px;font-weight:600;line-height:1.3;display:block}
   .ach .d{font-size:12.5px;color:var(--ink-faint);line-height:1.35;display:block;margin-top:1px}
+  .ach .en{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-faint);
+    display:block;margin-top:3px;opacity:.75;letter-spacing:.02em}
   .ach.checked{background:var(--panel-2);border-color:var(--line)}
   .ach.checked .n{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--line)}
   .ach .flag{
@@ -311,10 +313,10 @@
       <ul class="rulelist">
         <li><span class="tag">Mods</span><div><strong>Zero mods.</strong> Qualquer mod ativo troca a lista de conquistas por uma lista modded separada que <em>não</em> sincroniza com a Steam — inclusive os "aceitos pelo speedrun". Desative <em>space-age</em> não, mas desative qualquer outro. Planeje em um save separado modded e traga só as <strong>blueprint strings</strong>: a biblioteca de blueprints é global e importar blueprint vanilla não desativa nada.</div></li>
         <li><span class="tag">Mapa</span><div><strong>Configurações padrão</strong> em inimigos, poluição, expansão, área inicial e árvores. Desde a 2.0.45 mexer em qualquer um desses desliga as conquistas de combate/tempo. Recursos e cliffs você pode ajustar — inimigos e poluição, nunca. Sem comandos de console, nunca (o save fica marcado permanentemente).</div></li>
-        <li><span class="tag">Ordem</span><div><strong>Nenhuma estrutura inimiga pode morrer antes da artilharia.</strong> <em>Keeping your hands clean</em> exige que a <em>primeira</em> nest ou worm destruída na partida seja por artilharia — que só vem depois de Vulcanus. Cuidado com tanque, spidertron em auto-target, granadas, poison capsule e creep de turrets. Matar biters soltos é livre.</div></li>
-        <li><span class="tag">Ordem</span><div><strong>Nenhum painel solar e nenhuma laser turret até o primeiro foguete.</strong> <em>Steam all the way</em> e <em>Raining bullets</em> contam construções, não uso. Vale também para a primeira space platform. Depois do lançamento, libera geral.</div></li>
-        <li><span class="tag">Ordem</span><div><strong>Nenhum baú requester, buffer ou active provider</strong> até você pesquisar uma tecnologia com space science pack (<em>Logistic network embargo</em>). Passive provider e storage são permitidos — dá para viver de bots com isso.</div></li>
-        <li><span class="tag">Ordem</span><div><strong>Nada de production ou utility science antes de pesquisar com um pack de outro planeta</strong> (<em>Rush to space</em>). O metallurgic de Vulcanus resolve — e é o mesmo caminho da artilharia.</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nenhuma estrutura inimiga pode morrer antes da artilharia.</strong> <em>Eu lavo minhas mãos</em> exige que a <em>primeira</em> nest ou worm destruída na partida seja por artilharia — que só vem depois de Vulcanus. Cuidado com tanque, spidertron em auto-target, granadas, poison capsule e creep de turrets. Matar biters soltos é livre.</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nenhum painel solar e nenhuma laser turret até o primeiro foguete.</strong> <em>Vapor até o fim</em> e <em>Chuva de balas</em> contam construções, não uso. Vale também para a primeira space platform. Depois do lançamento, libera geral.</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nenhum baú requester, buffer ou active provider</strong> até você pesquisar uma tecnologia com space science pack (<em>Embargo de rede logística</em>). Passive provider e storage são permitidos — dá para viver de bots com isso.</div></li>
+        <li><span class="tag">Ordem</span><div><strong>Nada de production ou utility science antes de pesquisar com um pack de outro planeta</strong> (<em>Eu gosto assim, apressadinho</em>). O metallurgic de Vulcanus resolve — e é o mesmo caminho da artilharia.</div></li>
         <li><span class="tag ok">Livre</span><div><strong>Multiplayer conta</strong> se você ficar 50%+ do tempo do mapa online. Pausar, salvar e recarregar é livre; morrer não penaliza nada além do corpo.</div></li>
       </ul>
     </div>
@@ -324,7 +326,7 @@
 
   <h2 class="section">Sequência de crafting manual</h2>
   <div class="book">
-    <p class="note">Ordem exata do início do jogo, <b>sem fabricar nada extra</b> — <b>106 itens</b> no contador, dentro do orçamento de 111 do <i>Lazy bastard</i>. Siga estritamente: cada item fora da lista sai da sua folga. Acompanhe pela aba de produção → <i>hand crafted</i>.</p>
+    <p class="note">Ordem exata do início do jogo, <b>sem fabricar nada extra</b> — <b>106 itens</b> no contador, dentro do orçamento de 111 do <i>Desgraçado preguiçoso</i>. Siga estritamente: cada item fora da lista sai da sua folga. Acompanhe pela aba de produção → <i>hand crafted</i>.</p>
 
     <div class="bgroup">
       <h3>Ordem estrita · do minuto zero até a primeira assembler</h3>
@@ -399,7 +401,7 @@
       <h3>Nauvis — antes do foguete · colado em cima de ghost</h3>
       <div class="bp"><span class="slot">00</span><span class="nm">Arranque queimado</span><span class="ct">4 burner drills no carvão + 2 pares drill→stone furnace em ferro e cobre. Os primeiros 5 minutos sem pensar.</span></div>
       <div class="bp"><span class="slot">01</span><span class="nm">Coluna de fundição</span><span class="ct">Electric drill 1:1 com forno na correia, com a variante de steel furnace pronta para substituir por cima.</span></div>
-      <div class="bp"><span class="slot">02</span><span class="nm">Mall inicial</span><span class="ct">Assemblers de correia, inserter, poste médio, drill, forno e assembler. <u>É o que salva o Lazy bastard</u> — depois dele, nada mais sai da mão.</span></div>
+      <div class="bp"><span class="slot">02</span><span class="nm">Mall inicial</span><span class="ct">Assemblers de correia, inserter, poste médio, drill, forno e assembler. <u>É o que salva o Desgraçado preguiçoso</u> — depois dele, nada mais sai da mão.</span></div>
       <div class="bp"><span class="slot">03</span><span class="nm">Vermelha + verde</span><span class="ct">Bloco de labs alimentado pelo bus, já com espaço reservado para os packs seguintes.</span></div>
       <div class="bp"><span class="slot">04</span><span class="nm">Vapor repetível</span><span class="ct">Bomba : caldeira : motor na razão <u>1 : 20 : 40</u> ≈ 36 MW por tile. Sua única fonte de energia até o lançamento — faça três cópias.</span></div>
       <div class="bp"><span class="slot">05</span><span class="nm">Bus 4-4-2-2</span><span class="ct">Ferro, cobre, circuito verde e aço, com folga lateral para petróleo e vermelho depois.</span></div>
@@ -423,7 +425,7 @@
     <div class="bgroup">
       <h3>Espaço e planetas · blueprint de plataforma fica em livro separado</h3>
       <div class="bp"><span class="slot">17</span><span class="nm">Plataforma inicial</span><span class="ct">Coletores, britadores, thrusters e defesa de asteroide — o suficiente para space science e para viajar.</span></div>
-      <div class="bp"><span class="slot">18</span><span class="nm">Vulcanus</span><span class="ct">Big drills em calcita e tungstênio, foundry na lava, ciência metalúrgica. <u>Primeiro planeta</u>: destrava artilharia e <i>Rush to space</i>.</span></div>
+      <div class="bp"><span class="slot">18</span><span class="nm">Vulcanus</span><span class="ct">Big drills em calcita e tungstênio, foundry na lava, ciência metalúrgica. <u>Primeiro planeta</u>: destrava artilharia e <i>Eu gosto assim, apressadinho</i>.</span></div>
       <div class="bp"><span class="slot">19</span><span class="nm">Fulgora</span><span class="ct">Descarga de sucata, banco de recicladores, EM plant e o banco de acumuladores da tempestade.</span></div>
       <div class="bp"><span class="slot">20</span><span class="nm">Gleba</span><span class="ct">Nutrientes, bioflux, ciência agrícola e queima de spoilage — o bloco que mais dá errado se improvisado.</span></div>
       <div class="bp"><span class="slot">21</span><span class="nm">Aquilo</span><span class="ct">Heat pipes, fluoroketone e ciência criogênica, já pensando na plataforma de promethium.</span></div>
@@ -431,9 +433,9 @@
 
     <div class="bgroup locked">
       <h3>🔒 Cofre — livro separado, não abra antes da hora</h3>
-      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com painel solar</span><span class="ct">Colar por engano antes do foguete mata <i>Steam all the way</i>. Inclui blueprints de plataforma com solar.</span></div>
-      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com laser turret</span><span class="ct">Mata <i>Raining bullets</i>. Mantenha a muralha 09 como única defesa disponível no livro principal.</span></div>
-      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com requester, buffer ou active provider</span><span class="ct">Mata <i>Logistic network embargo</i> até você pesquisar com space science.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com painel solar</span><span class="ct">Colar por engano antes do foguete mata <i>Vapor até o fim</i>. Inclui blueprints de plataforma com solar.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com laser turret</span><span class="ct">Mata <i>Chuva de balas</i>. Mantenha a muralha 09 como única defesa disponível no livro principal.</span></div>
+      <div class="bp"><span class="slot">!</span><span class="nm">Tudo com requester, buffer ou active provider</span><span class="ct">Mata <i>Embargo de rede logística</i> até você pesquisar com space science.</span></div>
     </div>
   </div>
 
@@ -445,39 +447,39 @@
       <p>Teste cada um <b>em jogo</b> antes de confiar nele. Blueprint que parece certo no papel pode estar com rotação errada, e você só descobre quando a linha não anda.</p>
     </div>
     <div class="trick">
-      <h4>Lazy bastard: conte 111 <i>≤111 crafts manuais</i></h4>
+      <h4>Desgraçado preguiçoso <i>≤111 crafts manuais</i></h4>
       <p>Craft manual conta por <em>item</em>, não por clique — os intermediários entram na conta. Siga a sequência da seção acima e não improvise: assim que a assembling machine 1 existir, ela faz tudo, inclusive as próximas máquinas.</p>
     </div>
     <div class="trick">
       <h4>Vulcanus primeiro <i>trava tripla</i></h4>
-      <p>Vulcanus dá metallurgic science (→ <em>Rush to space</em>), a tecnologia de artilharia (→ destrava a primeira nest legal) e os demolishers (três kills + <em>Get off my lawn</em>). Fulgora e Gleba não desbloqueiam nada urgente. Ir para Vulcanus primeiro resolve quatro travas de ordem de uma vez.</p>
+      <p>Vulcanus dá metallurgic science (→ <em>Eu gosto assim, apressadinho</em>), a tecnologia de artilharia (→ destrava a primeira nest legal) e os demolishers (três kills + <em>Sai do meu gramado</em>). Fulgora e Gleba não desbloqueiam nada urgente. Ir para Vulcanus primeiro resolve quatro travas de ordem de uma vez.</p>
     </div>
     <div class="trick">
       <h4>O tiro de artilharia triplo <i>3 em 1</i></h4>
-      <p>O primeiro projétil de artilharia numa nest de Nauvis entrega <em>Keeping your hands clean</em>, <em>Art of siege</em> e <em>Pest control</em> no mesmo instante. Use um artillery wagon em trilho perto do ninho mais próximo.</p>
+      <p>O primeiro projétil de artilharia numa nest de Nauvis entrega <em>Eu lavo minhas mãos</em>, <em>A arte do estouro</em> e <em>O dedetizador chegou</em> no mesmo instante. Use um artillery wagon em trilho perto do ninho mais próximo.</p>
     </div>
     <div class="trick">
       <h4>Solaris em rede isolada <i>10 GJ/h</i></h4>
       <p>Depois do foguete, construa uma rede elétrica <em>separada</em> (sem tocar na principal): ~50 painéis solares + acumuladores + um consumo constante qualquer. 10 GJ/h ≈ 2,8 MW médios. Uma hora de jogo com essa rede rodando 100% solar e o achievement cai sozinho.</p>
     </div>
     <div class="trick">
-      <h4>Golem + Destroyer of worlds <i>combo</i></h4>
-      <p>Com mech armor lotada de energy shields legendárias, solte uma bomba atômica perto de você e sobreviva ao estouro: <em>I am the destroyer of worlds</em> e <em>Golem</em> (levar 500+ de dano num hit) na mesma explosão. Salve antes.</p>
+      <h4>Golem + destruidor de mundos <i>combo</i></h4>
+      <p>Com mech armor lotada de energy shields legendárias, solte uma bomba atômica perto de você e sobreviva ao estouro: <em>Eu sou o destruidor de mundos</em> e <em>Golem</em> (levar 500+ de dano num hit) na mesma explosão. Salve antes.</p>
     </div>
     <div class="trick">
-      <h4>Watch your step <i>morra de propósito</i></h4>
+      <h4>Cuidado onde pisa <i>morra de propósito</i></h4>
       <p>Loop curto de trilho, uma locomotiva em automático, você parado nos trilhos sem exoskeleton. O corpo fica com tudo — recupere depois. Faça longe da defesa.</p>
     </div>
     <div class="trick">
-      <h4>Mining with determination <i>patch mínimo</i></h4>
+      <h4>Até o último minério <i>patch mínimo</i></h4>
       <p>Procure o menor patch de minério isolado que achar (costuma ter um de 2–3 mil perto do spawn), cerque com electric drills e deixe drenar. Óleo não serve: poços nunca zeram.</p>
     </div>
     <div class="trick">
       <h4>Peixe legendário <i>o mais lento de todos</i></h4>
-      <p><em>Today's fish is trout a la creme</em> exige upcycle: fish breeding (agricultural science, só em Nauvis) em biochambers com quality modules + recyclers reciclando todo peixe que não for legendary. Roda ~1 h por peixe. <strong>Ligue essa fábrica assim que tiver agricultural science</strong> e esqueça dela — se deixar para o fim, você espera parado.</p>
+      <p><em>Hoje teremos peixe 'a la creme'</em> exige upcycle: fish breeding (agricultural science, só em Nauvis) em biochambers com quality modules + recyclers reciclando todo peixe que não for legendary. Roda ~1 h por peixe. <strong>Ligue essa fábrica assim que tiver agricultural science</strong> e esqueça dela — se deixar para o fim, você espera parado.</p>
     </div>
     <div class="trick">
-      <h4>You are doing it right <i>contador vitalício</i></h4>
+      <h4>Você está fazendo isso certo <i>contador vitalício</i></h4>
       <p>É máquinas colocadas por robôs &gt; colocadas na mão, contando o save inteiro. Depois dos construction bots, nunca mais coloque nada com a mão: ghost + bot, sempre. Os planetas viram lucro puro nesse contador.</p>
     </div>
     <div class="trick">
@@ -485,8 +487,8 @@
       <p>As três conquistas de distância são tempo real de viagem. Assim que tiver uma plataforma capaz de sobreviver além do Solar System Edge, mande-a embora e deixe viajando enquanto você faz o resto. É a coisa mais fácil de esquecer de começar cedo.</p>
     </div>
     <div class="trick">
-      <h4>Tiers de produção por hora <i>Iron throne / Circuit veteran</i></h4>
-      <p><em>Mass production</em> é cumulativo (20 M de circuitos verdes), mas <em>Iron throne</em>, <em>Circuit veteran</em> e <em>Computer age</em> são <strong>por hora</strong>: 400k placas de ferro/h, 25k circuitos vermelhos/h, 5k processing units/h. Isso é uma megabase de verdade — planeje o pós-vitória com beacons + módulos legendários, senão vira grind de 100 h.</p>
+      <h4>Tiers de produção por hora <i>Trono de ferro / Veterano de circuitos</i></h4>
+      <p><em>Produção em massa</em> é cumulativo (20 M de circuitos verdes), mas <em>Trono de ferro</em>, <em>Veterano de circuitos</em> e <em>Era dos computadores</em> são <strong>por hora</strong>: 400k placas de ferro/h, 25k circuitos vermelhos/h, 5k processing units/h. Isso é uma megabase de verdade — planeje o pós-vitória com beacons + módulos legendários, senão vira grind de 100 h.</p>
     </div>
   </div>
 
@@ -511,41 +513,41 @@ const PH = [
      "<b>Depois da assembling machine, nada mais sai da mão.</b> Ela fabrica tudo — as próximas máquinas, os trilhos e a locomotiva inclusive. Craftar trilho ou locomotiva na mão estoura o orçamento sozinho.",
      "Red + green science rodando antes dos 30 min. Steam engine logo de cara — e <b>nenhum painel solar</b>, nunca, até o foguete.",
      "<b>Trilhos e locomotiva antes de 1 h 30</b>, saindo da assembler. Não precisa de rede ferroviária: basta uma locomotiva montada sobre trilho dentro do prazo.",
-     "Deixe a poluição crescer naturalmente — <i>It stinks and they don't like it</i> cai sozinho no primeiro ataque. Defenda com gun turrets; <b>não avance em nenhum ninho</b>."
+     "Deixe a poluição crescer naturalmente — <i>Está fedendo e eles não gostam disso</i> cai sozinho no primeiro ataque. Defenda com gun turrets; <b>não avance em nenhum ninho</b>."
    ],
    a:["automate-this","getting-on-track","getting-on-track-pro","steam-power","research-automation","research-logistics","eco-unfriendly","stinks-dont-like"]},
 
   {n:"02", t:"Rush ao foguete em 8 horas", c:"1 h 30 → 8 h", hard:true,
    plan:[
-     "Military e chemical science na sequência; óleo assim que der (<i>Eco unfriendly</i> vem do research de oil processing).",
-     "<b>Pule production e utility science.</b> Elas ficam bloqueadas por <i>Rush to space</i> até você pesquisar com metallurgic.",
-     "Construction bots o quanto antes — a partir daí, <b>nada mais é colocado na mão</b> (contador de <i>You are doing it right</i>).",
+     "Military e chemical science na sequência; óleo assim que der (<i>Inimigo da natureza</i> vem do research de oil processing).",
+     "<b>Pule production e utility science.</b> Elas ficam bloqueadas por <i>Eu gosto assim, apressadinho</i> até você pesquisar com metallurgic.",
+     "Construction bots o quanto antes — a partir daí, <b>nada mais é colocado na mão</b> (contador de <i>Você está fazendo isso certo</i>).",
      "Defesa só com gun turrets e muro. <b>Zero laser turrets</b> até o lançamento.",
-     "Lançar o foguete antes das 8 h entrega <i>There is no spoon</i> e <i>No time for chitchat</i> juntos, e fecha <i>Lazy bastard</i>, <i>Steam all the way</i> e <i>Raining bullets</i> de uma vez."
+     "Lançar o foguete antes das 8 h entrega <i>Não existe colher</i> e <i>Sem tempo para conversa fiada</i> juntos, e fecha <i>Desgraçado preguiçoso</i>, <i>Vapor até o fim</i> e <i>Chuva de balas</i> de uma vez."
    ],
    a:["research-military","research-chemicals","smoke-kipper","no-spoon","no-chitchat","lazy-bastard","steam-all-way","raining-bullets"]},
 
   {n:"03", t:"Órbita, space science e Vulcanus", c:"8 h → ~14 h", hard:false,
    plan:[
-     "Primeira space platform → space science. <b>Só depois</b> de pesquisar uma tech com space science você pode construir requester/buffer/active provider (<i>Logistic network embargo</i> fecha aqui).",
+     "Primeira space platform → space science. <b>Só depois</b> de pesquisar uma tech com space science você pode construir requester/buffer/active provider (<i>Embargo de rede logística</i> fecha aqui).",
      "Agora sim: painéis solares e laser turrets liberados. Ligue uma rede solar isolada para começar a contar <i>Solaris</i>.",
-     "<b>Primeiro planeta: Vulcanus.</b> Metallurgic science → <i>Rush to space</i> travado e resolvido, e a tech de artilharia desbloqueada.",
-     "Em Vulcanus: construa em cima do território de um demolisher (<i>Get off my lawn</i>), mate small e medium com tanque/artilharia, e estoure um cliff (<i>Terraformer</i>). O big demolisher pode esperar o equipamento melhor."
+     "<b>Primeiro planeta: Vulcanus.</b> Metallurgic science → <i>Eu gosto assim, apressadinho</i> travado e resolvido, e a tech de artilharia desbloqueada.",
+     "Em Vulcanus: construa em cima do território de um demolisher (<i>Sai do meu gramado</i>), mate small e medium com tanque/artilharia, e estoure um cliff (<i>Isso está atrapalhando</i>). O big demolisher pode esperar o equipamento melhor."
    ],
    a:["reach-stars","research-space","logistic-embargo","solar-power","visit-vulcanus","research-metallurgics","rush-to-space","get-off-lawn","if-it-bleeds","bigger-guns","terraformer"]},
 
   {n:"04", t:"O primeiro tiro de artilharia", c:"assim que voltar a Nauvis", hard:true,
    plan:[
-     "Artillery turret ou artillery wagon no alcance do ninho mais próximo. <b>Confirme que nenhuma nest ou worm morreu ainda</b> — se morreu, <i>Keeping your hands clean</i> já era e a run de 100% acabou.",
-     "O primeiro projétil entrega <b>três conquistas de uma vez</b>: <i>Keeping your hands clean</i>, <i>Art of siege</i> e <i>Pest control</i>.",
-     "A partir daqui combate é livre: limpe ninhos à vontade, atropele 10 spawners com o tanque (<i>Steamrolled</i>) e 100 árvores (<i>Run Forrest, run</i>), e queime 10 mil árvores com flamethrower (<i>Pyromaniac</i>)."
+     "Artillery turret ou artillery wagon no alcance do ninho mais próximo. <b>Confirme que nenhuma nest ou worm morreu ainda</b> — se morreu, <i>Eu lavo minhas mãos</i> já era e a run de 100% acabou.",
+     "O primeiro projétil entrega <b>três conquistas de uma vez</b>: <i>Eu lavo minhas mãos</i>, <i>A arte do estouro</i> e <i>O dedetizador chegou</i>.",
+     "A partir daqui combate é livre: limpe ninhos à vontade, atropele 10 spawners com o tanque (<i>Panquecas para a sogra</i>) e 100 árvores (<i>Corra Forrest, corra</i>), e queime 10 mil árvores com flamethrower (<i>Piromaníaco</i>)."
    ],
    a:["hands-clean","art-of-siege","pest-control","steamrolled","run-forrest"]},
 
   {n:"05", t:"Fulgora e Gleba", c:"~14 h → 25 h", hard:false,
    plan:[
-     "Fulgora: electromagnetic science, recyclers e o começo da cadeia de <b>qualidade</b> (<i>Make it better</i>, <i>Crafting with quality</i>).",
-     "Gleba: agricultural science e pentapods. <b>Atraia um grupo com spores</b> para <i>It stinks and they do like it</i>.",
+     "Fulgora: electromagnetic science, recyclers e o começo da cadeia de <b>qualidade</b> (<i>Faça melhor</i>, <i>Isso está ficando bom</i>).",
+     "Gleba: agricultural science e pentapods. <b>Atraia um grupo com spores</b> para <i>Isso não me cheira bem</i>.",
      "Com agricultural science em mãos, <b>ligue já a fábrica de peixe legendário</b> em Nauvis (fish breeding + quality modules + recyclers). Ela roda sozinha por horas.",
      "Produtividade e módulos: com Vulcanus + Fulgora estáveis, os módulos 3 de speed, efficiency e productivity saem de graça."
    ],
@@ -553,114 +555,113 @@ const PH = [
 
   {n:"06", t:"Aquilo, fusão e a corrida das 40 horas", c:"25 h → 40 h", hard:true,
    plan:[
-     "Aquilo: cryogenic science e <b>fusion power</b> (<i>Fusion power</i>).",
-     "Promethium science exige plataforma de combate pesada no Solar System Edge — e é o que fecha <i>Tech maniac</i> depois.",
-     "<b>Chegar ou passar do Solar System Edge conta como terminar o jogo.</b> Antes de 40 h = <i>Express delivery</i> + <i>Work around the clock</i> + <i>Second star to the right</i> na mesma viagem.",
+     "Aquilo: cryogenic science e <b>fusion power</b> (<i>Energia de fusão nuclear</i>).",
+     "Promethium science exige plataforma de combate pesada no Solar System Edge — e é o que fecha <i>Cientista maluco</i> depois.",
+     "<b>Chegar ou passar do Solar System Edge conta como terminar o jogo.</b> Antes de 40 h = <i>Segunda estrela à direita e depois reto até amanhã</i> + <i>O melhor amigo do relógio</i> + <i>Ao infinito e além</i> na mesma viagem.",
      "Assim que a plataforma aguentar, <b>mande uma rumo ao shattered planet e deixe viajando</b> — 10 mil, 30 mil e 60 mil km são tempo real acumulando em segundo plano."
    ],
    a:["visit-aquilo","research-cryogenics","fusion-power","research-promethium","second-star","express-delivery","work-clock"]},
 
   {n:"07", t:"Pós-vitória: o farm sem relógio", c:"40 h → fim", hard:false,
    plan:[
-     "Sem mais prazos. Aqui entram os grinds: <b>Iron throne 3</b> (400k placas/h), <b>Circuit veteran 3</b> (25k circuitos vermelhos/h), <b>Computer age 3</b> (5k processing units/h) e <b>Mass production 3</b> (20 M de circuitos verdes acumulados). Megabase com beacons e módulos legendários.",
-     "Qualidade legendária: <i>My modules are legendary</i>, <i>Look at my shiny rare armor</i> e <i>No room for more</i> (mech armor inteira de equipamento legendário).",
+     "Sem mais prazos. Aqui entram os grinds: <b>Trono de ferro 3</b> (400k placas/h), <b>Veterano de circuitos 3</b> (25k circuitos vermelhos/h), <b>Era dos computadores 3</b> (5k unidades de processamento/h) e <b>Produção em massa 3</b> (20 M de circuitos verdes acumulados). Megabase com beacons e módulos legendários.",
+     "Qualidade legendária: <i>Uma lenda em forma de módulo</i>, <i>Olhe para minha rara e brilhante armadura</i> e <i>Há um burguês entre nós</i> (mech armor inteira de equipamento legendário).",
      "Miudezas: spidertron, 100 destroyers seguindo você (<i>Minions</i>), trem com rota de 1000+ tiles, peixe cru no foguete, patch de minério zerado, 10k itens entregues por logistic bots, 100 objetos desconstruídos por bots.",
-     "Por último os dois de risco, com save antes: nuke em si mesmo de mech armor (<i>Golem</i> + <i>I am the destroyer of worlds</i>) e morrer atropelado pela própria locomotiva (<i>Watch your step</i>).",
-     "<i>Tech maniac</i> fecha quando toda tecnologia não-infinita estiver pesquisada — é normalmente a última a cair."
+     "Por último os dois de risco, com save antes: nuke em si mesmo de mech armor (<i>Golem</i> + <i>Eu sou o destruidor de mundos</i>) e morrer atropelado pela própria locomotiva (<i>Cuidado onde pisa</i>).",
+     "<i>Cientista maluco</i> fecha quando toda tecnologia não-infinita estiver pesquisada — é normalmente a última a cair."
    ],
    a:["solaris","iron-1","iron-2","iron-3","circuit-1","circuit-2","circuit-3","computer-1","computer-2","computer-3","mass-1","mass-2","mass-3","research-production","research-utility","tech-maniac","arachnophilia","minions","trans-factorio","fish-space","mining-determination","package","delivery-service","automated-construction","automated-cleanup","doing-it-right","pyromaniac","size-matters","golem","destroyer-worlds","watch-step","my-modules-legendary","shiny-rare-armor","no-room-more","trout-creme","shattered-1","shattered-2","shattered-3"]}
 ];
 
 const A = {
-  "automate-this":["Automate this!","Construir uma assembling machine."],
-  "getting-on-track":["Getting on track","Construir uma locomotiva."],
-  "getting-on-track-pro":["Getting on track like a pro","Locomotiva nos primeiros 90 minutos.",1],
-  "steam-power":["Steam power","Gerar energia com steam engine."],
-  "solar-power":["Solar power","Gerar energia com painel solar.",0,"só depois do foguete"],
-  "nuclear-power":["Nuclear power","Gerar energia com usina nuclear."],
-  "eco-unfriendly":["Eco unfriendly","Pesquisar oil processing."],
-  "research-automation":["Research with automation","Pesquisar com automation science."],
-  "research-logistics":["Research with logistics","Pesquisar com logistic science."],
-  "research-military":["Research with military","Pesquisar com military science."],
-  "research-chemicals":["Research with chemicals","Pesquisar com chemical science."],
-  "research-production":["Research with production","Pesquisar com production science."],
-  "research-utility":["Research with utility","Pesquisar com utility science."],
-  "research-space":["Research with space","Pesquisar com space science."],
-  "stinks-dont-like":["It stinks and they don't like it","Provocar um ataque por poluição.",1],
-  "smoke-kipper":["Smoke me a kipper…","Lançar um foguete ao espaço."],
-  "no-chitchat":["No time for chitchat","Foguete em até 15 horas.",1],
-  "no-spoon":["There is no spoon","Foguete em até 8 horas.",1],
-  "lazy-bastard":["Lazy bastard","Foguete com no máximo 111 crafts manuais.",1],
-  "steam-all-way":["Steam all the way","Foguete sem ter construído nenhum painel solar.",1],
-  "raining-bullets":["Raining bullets","Foguete sem ter construído nenhuma laser turret.",1],
-  "logistic-embargo":["Logistic network embargo","Pesquisar com space science sem ter construído requester, buffer ou active provider.",1],
-  "hands-clean":["Keeping your hands clean","A PRIMEIRA estrutura inimiga destruída tem que ser por artilharia.",1],
-  "art-of-siege":["Art of siege","Destruir uma estrutura inimiga com artilharia."],
-  "pest-control":["Pest control","Destruir um biter spawner."],
-  "steamrolled":["Steamrolled","Destruir 10 spawners por impacto de veículo."],
-  "run-forrest":["Run Forrest, run","Destruir 100 árvores por impacto."],
-  "pyromaniac":["Pyromaniac","Destruir 10 000 árvores com fogo."],
-  "terraformer":["Terraformer","Destruir um cliff."],
-  "destroyer-worlds":["I am the destroyer of worlds","Usar uma bomba atômica."],
-  "golem":["Golem","Sobreviver a um hit de 500+ de dano."],
-  "watch-step":["Watch your step","Morrer atropelado por uma locomotiva em movimento."],
-  "minions":["Minions","Ter 100 robôs de combate seguindo você."],
-  "arachnophilia":["Arachnophilia","Construir um spidertron."],
-  "trans-factorio":["Trans-Factorio express","Um trem traçar rota de 1 000+ tiles."],
-  "mining-determination":["Mining with determination","Esgotar completamente um patch de recurso."],
-  "package":["You've got a package","Ser abastecido por um logistic robot."],
-  "delivery-service":["Delivery service","10 000 itens entregues a você por logistic bots."],
-  "automated-construction":["Automated construction","Construir 100 máquinas com robôs."],
-  "automated-cleanup":["Automated cleanup","Desconstruir 100 objetos com robôs."],
-  "doing-it-right":["You are doing it right","Construir mais máquinas com robôs do que na mão."],
-  "crafting-speed":["Crafting with speed","Fabricar um speed module 3."],
-  "crafting-efficiency":["Crafting with efficiency","Fabricar um efficiency module 3."],
-  "crafting-productivity":["Crafting with productivity","Fabricar um productivity module 3."],
-  "solaris":["Solaris","Produzir mais de 10 GJ/h só com painéis solares."],
-  "mass-1":["Mass production 1","10 000 circuitos eletrônicos."],
-  "mass-2":["Mass production 2","1 000 000 de circuitos eletrônicos."],
-  "mass-3":["Mass production 3","20 000 000 de circuitos eletrônicos."],
-  "circuit-1":["Circuit veteran 1","1 000 circuitos avançados por hora."],
-  "circuit-2":["Circuit veteran 2","10 000 circuitos avançados por hora."],
-  "circuit-3":["Circuit veteran 3","25 000 circuitos avançados por hora."],
-  "computer-1":["Computer age 1","500 processing units por hora."],
-  "computer-2":["Computer age 2","1 000 processing units por hora."],
-  "computer-3":["Computer age 3","5 000 processing units por hora."],
-  "iron-1":["Iron throne 1","20 000 placas de ferro por hora."],
-  "iron-2":["Iron throne 2","200 000 placas de ferro por hora."],
-  "iron-3":["Iron throne 3","400 000 placas de ferro por hora."],
-  "tech-maniac":["Tech maniac","Pesquisar todas as tecnologias."],
-  "fish-space":["So long and thanks for all the fish","Mandar um raw fish ao espaço num foguete."],
-
-  "reach-stars":["Reach for the stars","Criar uma space platform.",0,"sa"],
-  "visit-vulcanus":["Visit Vulcanus","Viajar até Vulcanus.",0,"sa"],
-  "visit-fulgora":["Visit Fulgora","Viajar até Fulgora.",0,"sa"],
-  "visit-gleba":["Visit Gleba","Viajar até Gleba.",0,"sa"],
-  "visit-aquilo":["Visit Aquilo","Viajar até Aquilo.",0,"sa"],
-  "research-metallurgics":["Research with metallurgics","Pesquisar com metallurgic science.",0,"sa"],
-  "research-electromagnetics":["Research with electromagnetics","Pesquisar com electromagnetic science.",0,"sa"],
-  "research-agriculture":["Research with agriculture","Pesquisar com agricultural science.",0,"sa"],
-  "research-cryogenics":["Research with cryogenics","Pesquisar com cryogenic science.",0,"sa"],
-  "research-promethium":["Research with promethium","Pesquisar com promethium science.",0,"sa"],
-  "rush-to-space":["Rush to space","Pesquisar com pack de outro planeta antes de destravar production ou utility science.",1,"sa"],
-  "get-off-lawn":["Get off my lawn","Perturbar um demolisher construindo no território dele.",0,"sa"],
-  "if-it-bleeds":["If it bleeds, we can kill it","Matar um small demolisher.",0,"sa"],
-  "bigger-guns":["We need bigger guns","Matar um medium demolisher.",0,"sa"],
-  "size-matters":["Size doesn't matter","Matar um big demolisher.",0,"sa"],
-  "stinks-do-like":["It stinks and they do like it","Atrair um grupo de pentapods com spores.",0,"sa"],
-  "make-it-better":["Make it better","Inserir um quality module num slot.",0,"sa"],
-  "crafting-quality":["Crafting with quality","Fabricar um quality module 3.",0,"sa"],
-  "my-modules-legendary":["My modules are legendary","Fabricar um quality module 3 legendário.",0,"sa"],
-  "shiny-rare-armor":["Look at my shiny rare armor","Equipar power armor MK2 ou mech armor rare+.",0,"sa"],
-  "no-room-more":["No room for more","Mech armor legendária cheia de equipamento legendário.",0,"sa"],
-  "trout-creme":["Today's fish is trout a la creme","Comer um peixe legendário.",0,"sa"],
-  "fusion-power":["Fusion power","Gerar energia com usina de fusão.",0,"sa"],
-  "second-star":["Second star to the right…","Chegar ao Solar System Edge ou além.",0,"sa"],
-  "work-clock":["Work around the clock","Terminar o jogo em até 100 horas.",1,"sa"],
-  "express-delivery":["Express delivery","Terminar o jogo em até 40 horas.",1,"sa"],
-  "shattered-1":["Going to shattered planet 1","Viajar 10 000 km rumo ao shattered planet.",0,"sa"],
-  "shattered-2":["Going to shattered planet 2","Viajar 30 000 km rumo ao shattered planet.",0,"sa"],
-  "shattered-3":["Going to shattered planet 3","Viajar 60 000 km rumo ao shattered planet.",0,"sa"]
+  "automate-this":["Automatize isso!", "Construa uma máquina de montagem.", 0, 0, "Automate this!"],
+  "getting-on-track":["Mantendo-se nos trilhos", "Construa uma locomotiva.", 0, 0, "Getting on track"],
+  "getting-on-track-pro":["Mantendo-se nos trilhos com maestria", "Construa uma locomotiva nos primeiros 90 minutos do jogo.", 1, 0, "Getting on track like a pro"],
+  "steam-power":["Energia a vapor", "Comece a produzir eletricidade com um motor a vapor.", 0, 0, "Steam power"],
+  "solar-power":["Energia Solar", "Comece a produzir eletricidade com painéis solares.", 0, "só depois do foguete", "Solar power"],
+  "nuclear-power":["Energia nuclear", "Comece a produzir eletricidade com uma usina nuclear.", 0, 0, "Nuclear power"],
+  "eco-unfriendly":["Inimigo da natureza", "Pesquise refinamento de petróleo.", 0, 0, "Eco unfriendly"],
+  "research-automation":["Chega de fazer na mão", "Pesquise uma tecnologia usando pacotes científicos de automação.", 0, 0, "Research with automation"],
+  "research-logistics":["Hora de organizar", "Pesquise uma tecnologia usando pacotes científicos de logística.", 0, 0, "Research with logistics"],
+  "research-military":["Onde compro armas?", "Pesquise uma tecnologia usando pacotes científicos militares.", 0, 0, "Research with military"],
+  "research-chemicals":["Traga o meu jaleco", "Pesquise uma tecnologia usando pacotes científicos de química.", 0, 0, "Research with chemicals"],
+  "research-production":["É fábrica de carro é?", "Pesquise uma tecnologia usando pacotes científicos de produção.", 0, 0, "Research with production"],
+  "research-utility":["Isso deve ser útil", "Pesquise uma tecnologia usando pacotes científicos de utilitários.", 0, 0, "Research with utility"],
+  "research-space":["O doce som do espaço", "Pesquise uma tecnologia usando pacotes científicos espaciais.", 0, 0, "Research with space"],
+  "stinks-dont-like":["Está fedendo e eles não gostam disso", "Desencadeie um ataque alienígena pela poluição.", 1, 0, "It stinks and they don't like it"],
+  "smoke-kipper":["Faça-me um banquete, estarei de volta para o café da manhã", "Lance um foguete para o espaço.", 0, 0, "Smoke me a kipper…"],
+  "no-chitchat":["Sem tempo para conversa fiada", "Lance um foguete para o espaço dentro de 15 horas.", 1, 0, "No time for chitchat"],
+  "no-spoon":["Não existe colher", "Lance um foguete para o espaço dentro de 8 horas.", 1, 0, "There is no spoon"],
+  "lazy-bastard":["Desgraçado preguiçoso", "Vença o jogo criando não mais do que 111 itens.", 1, 0, "Lazy bastard"],
+  "steam-all-way":["Vapor até o fim", "Lance um foguete para o espaço sem construir painéis solares.", 1, 0, "Steam all the way"],
+  "raining-bullets":["Chuva de balas", "Vença o jogo sem construir nenhuma torreta laser.", 1, 0, "Raining bullets"],
+  "logistic-embargo":["Embargo de rede logística", "Conclua todas as pesquisas com ciência espacial (Jogo base) ou qualquer pesquisa com ciência planetária (Space Age) sem usar baús provedores ativos, buffer ou solicitadores.", 1, 0, "Logistic network embargo"],
+  "hands-clean":["Eu lavo minhas mãos", "Destrua sua primeira estrutura inimiga usando artilharia.", 1, 0, "Keeping your hands clean"],
+  "art-of-siege":["A arte do estouro", "Destrua uma estrutura inimiga usando artilharia.", 0, 0, "Art of siege"],
+  "pest-control":["O dedetizador chegou", "Destrua um ninho de mordedores.", 0, 0, "Pest control"],
+  "steamrolled":["Panquecas para a sogra", "Destrua 10 ninhos por impacto.", 0, 0, "Steamrolled"],
+  "run-forrest":["Corra Forrest, corra", "Destrua 100 arvores por impacto.", 0, 0, "Run Forrest, run"],
+  "pyromaniac":["Piromaníaco", "Destrua 10.000 árvores com fogo.", 0, 0, "Pyromaniac"],
+  "terraformer":["Isso está atrapalhando", "Destrua um penhasco.", 0, 0, "Terraformer"],
+  "destroyer-worlds":["Eu sou o destruidor de mundos", "Use e faça CABUM! com uma bomba atômica.", 0, 0, "I am the destroyer of worlds"],
+  "golem":["Golem", "Sobreviva a um ataque de 500 de dano ou mais.", 0, 0, "Golem"],
+  "watch-step":["Cuidado onde pisa", "Seja morto por uma locomotiva em movimento.", 0, 0, "Watch your step"],
+  "minions":["Minions", "Tenha 100 robôs de combate ou mais te seguindo.", 0, 0, "Minions"],
+  "arachnophilia":["Aracnofobia", "Construa uma Spidertron.", 0, 0, "Arachnophilia"],
+  "trans-factorio":["Expresso Trans-Factorio", "Tenha um trem que planeje uma trajetória de 1000 blocos ou mais.", 0, 0, "Trans-Factorio express"],
+  "mining-determination":["Até o último minério", "Esgote completamente uma área de recursos.", 0, 0, "Mining with determination"],
+  "package":["Você tem uma entrega", "Abasteça o personagem usando um robô logístico.", 0, 0, "You've got a package"],
+  "delivery-service":["Serviço de entrega", "Abasteça o personagem com 10k itens entregues por robôs logísticos.", 0, 0, "Delivery service"],
+  "automated-construction":["Construção automatizada", "Construa 100 estruturas usando robôs.", 0, 0, "Automated construction"],
+  "automated-cleanup":["Limpeza automatizada", "Desconstrua 100 objetos com robôs.", 0, 0, "Automated cleanup"],
+  "doing-it-right":["Você está fazendo isso certo", "Construa mais máquinas usando robôs do que manualmente.", 0, 0, "You are doing it right"],
+  "crafting-speed":["Acelera, que é sucesso", "Fabrique um módulo de velocidade 3.", 0, 0, "Crafting with speed"],
+  "crafting-efficiency":["As árvores agradecem", "Fabrique um módulo de eficiência 3.", 0, 0, "Crafting with efficiency"],
+  "crafting-productivity":["Quanto mais, Melhor", "Fabrique um módulo de produtividade 3.", 0, 0, "Crafting with productivity"],
+  "solaris":["Solaris", "Produza mais de 10 GJ por hora, usando apenas painéis solares.", 0, 0, "Solaris"],
+  "mass-1":["Produção em massa 1", "Produza 10k de circuitos eletrônicos.", 0, 0, "Mass production 1"],
+  "mass-2":["Produção em massa 2", "Produza 1M de circuitos eletrônicos.", 0, 0, "Mass production 2"],
+  "mass-3":["Produção em massa 3", "Produza 20M de circuitos eletrônicos.", 0, 0, "Mass production 3"],
+  "circuit-1":["Veterano de circuitos 1", "Produza 1k de circuitos avançados por hora.", 0, 0, "Circuit veteran 1"],
+  "circuit-2":["Veterano de circuitos 2", "Produza 10k de circuitos avançados por hora.", 0, 0, "Circuit veteran 2"],
+  "circuit-3":["Veterano de circuitos 3", "Produza 25k de circuitos avançados por hora.", 0, 0, "Circuit veteran 3"],
+  "computer-1":["Era dos computadores 1", "Produza 500 unidades de processamento por hora.", 0, 0, "Computer age 1"],
+  "computer-2":["Era dos computadores 2", "Produza 1k de unidades de processamento por hora.", 0, 0, "Computer age 2"],
+  "computer-3":["Era dos computadores 3", "Produza 5k de unidades de processamento por hora.", 0, 0, "Computer age 3"],
+  "iron-1":["Trono de ferro 1", "Produza 20k chapas de ferro por hora.", 0, 0, "Iron throne 1"],
+  "iron-2":["Trono de ferro 2", "Produza 200k chapas de ferro por hora.", 0, 0, "Iron throne 2"],
+  "iron-3":["Trono de ferro 3", "Produza 400k de chapas de ferro por hora.", 0, 0, "Iron throne 3"],
+  "tech-maniac":["Cientista maluco", "Pesquise todas as tecnologias.", 0, 0, "Tech maniac"],
+  "fish-space":["Até mais, e obrigado pelos peixes", "Mande um peixe cru ao espaço num foguete.", 0, 0, "So long and thanks for all the fish"],
+  "reach-stars":["Caminhando para as estrelas", "Crie uma plataforma espacial.", 0, "sa", "Reach for the stars"],
+  "visit-vulcanus":["Agora a chapa vai esquentar", "Viaje para o planeta Vulcanus.", 0, "sa", "Visit Vulcanus"],
+  "visit-fulgora":["Um grande planeta rosa", "Viaje para o planeta Fulgora.", 0, "sa", "Visit Fulgora"],
+  "visit-gleba":["Eu tenho certeza que vou me arrepender disso", "Viaje para o planeta Gleba.", 0, "sa", "Visit Gleba"],
+  "visit-aquilo":["Em Áquilo, o calor é lenda", "Viaje para o planeta Áquilo.", 0, "sa", "Visit Aquilo"],
+  "research-metallurgics":["Está quente aqui", "Pesquise uma tecnologia usando pacotes científicos de metalurgia.", 0, "sa", "Research with metallurgics"],
+  "research-electromagnetics":["Quem ligou o imã?", "Pesquise uma tecnologia usando pacotes científicos eletromagnéticos.", 0, "sa", "Research with electromagnetics"],
+  "research-agriculture":["Elas crescem tão rápido", "Pesquise uma tecnologia usando pacotes científicos de agricultura.", 0, "sa", "Research with agriculture"],
+  "research-cryogenics":["Está frio aqui", "Pesquise uma tecnologia usando pacotes científicos criogênicos.", 0, "sa", "Research with cryogenics"],
+  "research-promethium":["Deixaram recado", "Pesquise uma tecnologia usando pacotes científicos de Prometheus.", 0, "sa", "Research with promethium"],
+  "rush-to-space":["Eu gosto assim, apressadinho", "Pesquise com ciência interplanetária antes de desbloquear pacotes científicos de produção ou de utilitários.", 1, "sa", "Rush to space"],
+  "get-off-lawn":["Sai do meu gramado", "Irrite um demolidor construindo no seu território.", 0, "sa", "Get off my lawn"],
+  "if-it-bleeds":["Não foi tão difícil assim", "Mate um demolidor pequeno.", 0, "sa", "If it bleeds, we can kill it"],
+  "bigger-guns":["Precisamos de armas maiores", "Mate um demolidor médio.", 0, "sa", "We need bigger guns"],
+  "size-matters":["Tamanho não é documento", "Mate um demolidor grande.", 0, "sa", "Size doesn't matter"],
+  "stinks-do-like":["Isso não me cheira bem", "Atraia um grupo de pentapods usando esporos.", 0, "sa", "It stinks and they do like it"],
+  "make-it-better":["Faça melhor", "Insira manualmente um módulo de qualidade em uma máquina.", 0, "sa", "Make it better"],
+  "crafting-quality":["Isso está ficando bom", "Fabrique um módulo de qualidade 3.", 0, "sa", "Crafting with quality"],
+  "my-modules-legendary":["Uma lenda em forma de módulo", "Fabrique um módulo lendário de qualidade 3.", 0, "sa", "My modules are legendary"],
+  "shiny-rare-armor":["Olhe para minha rara e brilhante armadura", "Equipe uma armadura MK2 rara, ou melhor. Ou uma armadura MK3.", 0, "sa", "Look at my shiny rare armor"],
+  "no-room-more":["Há um burguês entre nós", "Encha cada slot de uma armadura MK3 lendária com equipamentos lendários.", 0, "sa", "No room for more"],
+  "trout-creme":["Hoje teremos peixe 'a la creme'", "Coma um peixe lendário.", 0, "sa", "Today's fish is trout a la creme"],
+  "fusion-power":["Energia de fusão nuclear", "Comece a produzir eletricidade com uma usina de fusão nuclear.", 0, "sa", "Fusion power"],
+  "second-star":["Ao infinito e além....", "Termine o jogo.", 0, "sa", "Second star to the right…"],
+  "work-clock":["O melhor amigo do relógio", "Termine o jogo dentro de 100 horas.", 1, "sa", "Work around the clock"],
+  "express-delivery":["Segunda estrela à direita e depois reto até amanhã", "Termine o jogo dentro de 40 horas.", 1, "sa", "Express delivery"],
+  "shattered-1":["A primeira parada do Infinito", "Viaje 10 000 km se aproximando do planeta destruído.", 0, "sa", "Going to shattered planet 1"],
+  "shattered-2":["A escuridão além do Horizonte", "Viaje 30 000 km se aproximando do planeta destruído.", 0, "sa", "Going to shattered planet 2"],
+  "shattered-3":["Onde nem a luz se atreve a brilhar", "Viaje 60 000 km se aproximando do planeta destruído.", 0, "sa", "Going to shattered planet 3"]
 };
 
 const KEY = "factorio-88-v1";
@@ -681,7 +682,8 @@ PH.forEach(p => {
     const flag = timed ? '<span class="flag">trava</span>' : (sa ? '<span class="flag sa">SA</span>' : "");
     return '<label class="ach' + (done[id] ? " checked" : "") + '" data-id="' + id + '">' +
       '<input type="checkbox"' + (done[id] ? " checked" : "") + '>' +
-      '<span><span class="n">' + d[0] + flag + '</span><span class="d">' + d[1] + '</span></span></label>';
+      '<span><span class="n">' + d[0] + flag + '</span><span class="d">' + d[1] + '</span>' +
+      '<span class="en">' + d[4] + '</span></span></label>';
   }).join("");
   sec.innerHTML =
     '<div class="head"><div class="num">' + p.n + '</div>' +
